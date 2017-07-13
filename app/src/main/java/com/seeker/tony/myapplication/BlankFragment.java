@@ -10,11 +10,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.meiyou.jet.annotation.JFindView;
 import com.meiyou.jet.annotation.JFindViewOnClick;
 import com.meiyou.jet.process.Jet;
+import com.seeker.tony.myapplication.route.Route;
 
 /**
  * BLank Fragment
@@ -85,13 +85,17 @@ public class BlankFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        String uri = "";
+        Route route = Route.getInstance();
         int id = v.getId();
         switch (id) {
             case R.id.btn_findView:
-                Toast.makeText(context, "Btn findView", Toast.LENGTH_SHORT).show();
+                uri = "meiyou:///home";
+                route.run(uri);
                 break;
             case R.id.btn_findview_onclick:
-                Toast.makeText(context, "findView on Click ", Toast.LENGTH_SHORT).show();
+                uri = "meiyou:///home/user";
+                route.run(uri);
                 break;
             default:
                 break;
