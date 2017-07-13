@@ -15,7 +15,7 @@ import javax.lang.model.element.TypeElement;
  * @since 17/7/13
  */
 @AutoService(Processor.class)
-@SupportedAnnotationTypes({ "com.meiyou.annotation.JUri" })
+@SupportedAnnotationTypes({ "com.meiyou.annotation.JUri"})
 public class RouteProcessor extends  AbstractProcessor{
 
     @Override
