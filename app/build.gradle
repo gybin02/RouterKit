@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 //apply plugin: 'com.neenbedankt.android-apt'
-apply plugin: 'android-aspectjx'
+//apply plugin: 'android-aspectjx'
 
 
 android {
@@ -28,7 +28,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    compile project(':jet_annotation')
+//    compile project(':jet_annotation')
 //    compile project(':jet_library')
     annotationProcessor project(':jet_compiler')
     compile 'com.android.support:appcompat-v7:24.2.1'
@@ -37,6 +37,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.meiyou.framework:jet:1.0.0'
 //    compile project(':jet_aspect')
-    compile 'org.aspectj:aspectjrt:1.8.9'
+//    compile 'org.aspectj:aspectjrt:1.8.9'
     
 }
