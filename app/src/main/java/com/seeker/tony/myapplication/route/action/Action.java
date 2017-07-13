@@ -10,7 +10,11 @@ import android.content.Context;
  */
 
 public class Action {
+    @Deprecated
     public void run(Context context) {
     }
 
+    public void run(String uri) {
+        
+    }
 }
