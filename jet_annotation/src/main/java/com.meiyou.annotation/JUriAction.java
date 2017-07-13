@@ -12,4 +12,5 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE) // 代表在类级别上才能使用该注解
 @Retention(RetentionPolicy.SOURCE)
 public @interface JUriAction {
+    String[] value();
 }

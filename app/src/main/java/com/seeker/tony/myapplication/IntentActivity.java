@@ -5,11 +5,13 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.meiyou.annotation.JUri;
 import com.meiyou.jet.annotation.JIntent;
 import com.meiyou.jet.process.Jet;
 
 import java.io.Serializable;
 
+@JUri("meiyou:///home")
 public class IntentActivity extends AppCompatActivity {
     @JIntent("stringExtra")
     String stringExtra;
