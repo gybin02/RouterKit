@@ -10,6 +10,8 @@
 
 ![原理图](http://upload-images.jianshu.io/upload_images/53953-ce3ffb119e0d6534.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+![URI定义](http://upload-images.jianshu.io/upload_images/53953-054d5e9096445d84.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 命名来自 WordPress的Jetpack;
 
 ### 常见问题
