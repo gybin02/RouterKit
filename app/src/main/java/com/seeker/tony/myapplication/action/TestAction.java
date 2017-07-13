@@ -1,6 +1,5 @@
 package com.seeker.tony.myapplication.action;
 
-import android.content.Context;
 import android.widget.Toast;
 
 import com.meiyou.annotation.JUriAction;
@@ -13,9 +12,10 @@ import com.seeker.tony.myapplication.route.action.Action;
 
 @JUriAction("meiyou:///home/user")
 public class TestAction extends Action {
+
     @Override
-    public void run(Context context) {
-        super.run(context);
+    public void run(String uri) {
+        super.run(uri);
         Toast.makeText(context, "Test Action", Toast.LENGTH_SHORT).show();
     }
 }

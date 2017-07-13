@@ -2,6 +2,8 @@ package com.seeker.tony.myapplication.route.action;
 
 import android.content.Context;
 
+import com.seeker.tony.myapplication.MyApplication;
+
 /**
  * 基类方法
  *
@@ -10,11 +12,10 @@ import android.content.Context;
  */
 
 public class Action {
-    @Deprecated
-    public void run(Context context) {
-    }
+    public Context context = MyApplication.getContext();
+    
 
     public void run(String uri) {
-        
+
     }
 }
