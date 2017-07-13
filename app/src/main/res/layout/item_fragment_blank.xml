@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_findView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment"/>
+
+
+    <Button
+        android:id="@+id/btn_findView"
+        android:layout_width="102dp"
+        android:layout_height="wrap_content"
+        android:text="btn_findView"/>
+
+
+    <Button
+        android:id="@+id/btn_findview_onclick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="btn_findview_onclick"/>
+
+</LinearLayout>
