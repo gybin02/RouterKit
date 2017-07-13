@@ -28,7 +28,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-//    compile project(':jet_annotation')
+    compile project(':jet_annotation')
 //    compile project(':jet_library')
     annotationProcessor project(':jet_compiler')
     compile 'com.android.support:appcompat-v7:24.2.1'
