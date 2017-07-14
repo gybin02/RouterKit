@@ -47,7 +47,7 @@ public class Router {
     }
 
     private Router() {
-//        Class<?> table = Class.forName(RouterConstant.router_pkg + "." + RouterConstant.router_class);
+//        Class<?> table = Class.forName(RouterConstant.PkgName + "." + RouterConstant.ClassName);
 //        Action function = (Action) 
 //        RouterTable instance = table.newInstance();
 

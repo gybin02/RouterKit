@@ -9,6 +9,6 @@ package com.meiyou.router;
 
 public class RouterConstant {
 
-    public static final String router_pkg = "com.meiyou.router.data";
-    public static final String router_class = "RouterTable";
+    public static final String PkgName = "com.meiyou.router.data";
+    public static final String ClassName = "RouterTable";
 }
