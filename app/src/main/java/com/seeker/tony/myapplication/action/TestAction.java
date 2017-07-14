@@ -10,7 +10,7 @@ import com.seeker.tony.myapplication.route.action.Action;
  * @since 17/7/13
  */
 
-@JUriAction("meiyou:///home/user")
+@JUriAction("meiyou:///home/action")
 public class TestAction extends Action {
 
     @Override

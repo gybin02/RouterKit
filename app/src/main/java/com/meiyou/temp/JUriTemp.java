@@ -15,9 +15,15 @@ public class JUriTemp {
 
     static {
         RouteBean bean = new RouteBean();
-        bean.uri = "meiyou:///home";
+        bean.uri = "/home";
         bean.target = "com.seeker.tony.myapplication.IntentActivity";
         bean.type = RouteType.UI;
+        map.put(bean.uri, bean);
+        
+        RouteBean bean2 = new RouteBean();
+        bean2.uri = "/home/action";
+        bean2.target = "com.seeker.tony.myapplication.action.TestAction";
+        bean2.type = RouteType.METHOD;
         map.put(bean.uri, bean);
     }
 

@@ -8,14 +8,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.meiyou.jet.annotation.JFindView;
 import com.meiyou.jet.annotation.JFindViewOnClick;
 import com.meiyou.jet.process.Jet;
 import com.seeker.tony.myapplication.route.Route;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    @JFindView(R.id.btn_findView)
+    @JFindViewOnClick(R.id.btn_findView)
     Button btnHello;
 
     @JFindViewOnClick(R.id.btn_findview_onclick)
@@ -74,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 route.run(uri);
                 break;
             case R.id.btn_findview_onclick:
-                uri = "meiyou:///home/user";
+                uri = "meiyou:///home/action";
                 route.run(uri);
                 break;
             case R.id.btn_implement:

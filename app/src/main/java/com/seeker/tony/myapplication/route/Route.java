@@ -67,7 +67,7 @@ public class Route {
             String path = uriTemp.getPath();
 
             if (!uriTable.containsKey(path)) {
-                Log.d(TAG, "未找到该路由：" + path);
+                Log.w(TAG, "未找到该路由：" + path);
                 return;
             }
 
