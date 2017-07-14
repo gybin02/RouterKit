@@ -5,7 +5,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import model.RouteType;
+import com.meiyou.router.model.RouteType;
 
 /**
  * @author zhengxiaobin@xiaoyouzi.com

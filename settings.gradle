@@ -1,1 +1,1 @@
-include ':app', ':jet_compiler', ':jet_annotation'
+include ':app', ':jet_compiler', ':jet_annotation', ':jet_router'
