@@ -19,7 +19,7 @@ import javax.lang.model.element.TypeElement;
 //@AutoService(Processor.class)
 //对应getSupportedSourceVersion方法
 //@SupportedSourceVersion(SourceVersion.get())
-@SupportedAnnotationTypes({ "com.example.Test" })
+@SupportedAnnotationTypes({ "com.meiyou.annotation.Test" })
 public class TestProcessor extends AbstractProcessor {
 
     @Override

@@ -18,7 +18,7 @@ import javax.lang.model.util.ElementFilter;
 import javax.tools.JavaFileObject;
 
 @AutoService(Processor.class)
-@SupportedAnnotationTypes("com.example.AutoParcel")
+@SupportedAnnotationTypes("com.meiyou.annotation.AutoParcel")
 public final class AutoParcelProcessor extends AbstractProcessor {
 
     @Override

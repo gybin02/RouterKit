@@ -20,7 +20,7 @@ import javax.lang.model.util.Elements;
 //对应getSupportedSourceVersion方法
 //@SupportedSourceVersion(SourceVersion.lastestSupported())
 //对应getSupportedAnnotationTypes方法
-@SupportedAnnotationTypes({ "com.example.MethodInfo" })
+@SupportedAnnotationTypes({ "com.meiyou.annotation.MethodInfo" })
 public class MethodInfoProcessor extends AbstractProcessor {
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment env) {
