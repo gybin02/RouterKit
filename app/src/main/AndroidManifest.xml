@@ -2,8 +2,9 @@
 <manifest package="com.seeker.tony.myapplication"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <com.seeker.tony.myapplication.MyApplication
+    <application
         android:allowBackup="true"
+        android:name=".MyApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -21,6 +22,6 @@
         </activity>
         <activity android:name=".IntentActivity">
         </activity>
-    </com.seeker.tony.myapplication.MyApplication>
+    </application>
 
 </manifest>
