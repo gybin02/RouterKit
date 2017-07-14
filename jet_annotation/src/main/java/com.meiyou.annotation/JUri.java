@@ -1,11 +1,12 @@
 package com.meiyou.annotation;
 
+import com.meiyou.router.model.RouteType;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import com.meiyou.router.model.RouteType;
 
 /**
  * @author zhengxiaobin@xiaoyouzi.com

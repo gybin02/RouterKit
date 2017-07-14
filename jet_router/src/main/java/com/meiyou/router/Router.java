@@ -6,17 +6,15 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.meiyou.temp.JUriTemp;
-import com.seeker.tony.myapplication.route.action.Action;
+import com.meiyou.router.action.Action;
+import com.meiyou.router.model.RouteBean;
+import com.meiyou.router.model.RouteType;
 
 import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
-import com.meiyou.router.model.RouteBean;
-import com.meiyou.router.model.RouteType;
 
 /**
  * 实现Route功能，
@@ -48,6 +46,9 @@ public class Router {
     }
 
     private Router() {
+        Class.forName(RouterConstant.router_pkg)
+        
+        
         uriTable = JUriTemp.map;
         Log.d(TAG, "uriTable: size = " + uriTable.size());
     }
