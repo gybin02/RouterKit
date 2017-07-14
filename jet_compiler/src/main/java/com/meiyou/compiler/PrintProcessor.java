@@ -1,5 +1,6 @@
 package com.meiyou.compiler;
 
+import com.google.auto.service.AutoService;
 import com.meiyou.annotation.Print;
 
 import java.util.LinkedHashSet;
@@ -8,12 +9,14 @@ import java.util.Set;
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Messager;
 import javax.annotation.processing.ProcessingEnvironment;
+import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 import javax.tools.Diagnostic;
-
+@Deprecated
+@AutoService(Processor.class)
 public class PrintProcessor extends AbstractProcessor {
 
     private Messager mMessager;
@@ -36,7 +39,6 @@ public class PrintProcessor extends AbstractProcessor {
 
     @Override
     public SourceVersion getSupportedSourceVersion() {
-
         return SourceVersion.latestSupported();
     }
 

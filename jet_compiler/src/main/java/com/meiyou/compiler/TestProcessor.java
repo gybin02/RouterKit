@@ -1,5 +1,6 @@
 package com.meiyou.compiler;
 
+import com.google.auto.service.AutoService;
 import com.meiyou.annotation.Test;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
@@ -12,14 +13,13 @@ import java.util.Set;
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Filer;
 import javax.annotation.processing.ProcessingEnvironment;
+import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.TypeElement;
 
-//@AutoService(Processor.class)
-//对应getSupportedSourceVersion方法
-//@SupportedSourceVersion(SourceVersion.get())
+@AutoService(Processor.class)
 @SupportedAnnotationTypes({ "com.meiyou.annotation.Test" })
 public class TestProcessor extends AbstractProcessor {
     private Filer filer;

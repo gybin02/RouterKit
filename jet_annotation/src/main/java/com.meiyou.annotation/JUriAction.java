@@ -9,6 +9,7 @@ import java.lang.annotation.Target;
  * @author zhengxiaobin@xiaoyouzi.com
  * @since 17/7/13
  */
+ @Deprecated
 @Target(ElementType.TYPE) // 代表在类级别上才能使用该注解
 @Retention(RetentionPolicy.SOURCE)
 public @interface JUriAction {

@@ -15,7 +15,7 @@ import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.Elements;
 
-
+@Deprecated
 @AutoService(Processor.class)
 //对应getSupportedSourceVersion方法
 //@SupportedSourceVersion(SourceVersion.lastestSupported())

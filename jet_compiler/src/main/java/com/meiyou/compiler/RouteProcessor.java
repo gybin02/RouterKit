@@ -3,6 +3,7 @@ package com.meiyou.compiler;
 import com.google.auto.service.AutoService;
 import com.meiyou.annotation.JUri;
 import com.meiyou.router.RouterConstant;
+import com.meiyou.router.model.RouteBean;
 import com.squareup.javapoet.CodeBlock;
 import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
@@ -31,7 +32,11 @@ import javax.lang.model.element.TypeElement;
 @AutoService(Processor.class)
 @SupportedAnnotationTypes({"com.meiyou.annotation.JUri"})
 public class RouteProcessor extends AbstractProcessor {
+    /**
+     * APT 默认目录
+     */
     Filer filer;
+
     @Override
     public synchronized void init(ProcessingEnvironment processingEnvironment) {
         super.init(processingEnvironment);
@@ -78,12 +83,13 @@ public class RouteProcessor extends AbstractProcessor {
      * @throws Exception
      */
     private void createJava(HashMap<String, String> map) throws Exception {
+
         CodeBlock.Builder builder = CodeBlock.builder();
         for (Map.Entry<String, String> entry : map.entrySet()) {
             String key = entry.getKey();
             String clazz = entry.getValue();
 
-            builder.add("RouteBean.createBean(map, RouteBean.createBean(map,$s, $s，);", key, clazz);
+            builder.add("$N.createBean(map,$s, $s);", RouteBean.class, key, clazz);
         }
         CodeBlock codeBlock = builder.build();
 
@@ -95,7 +101,7 @@ public class RouteProcessor extends AbstractProcessor {
                                     .addStaticBlock(codeBlock)
                                     .build();
         JavaFile javaFile = JavaFile.builder(RouterConstant.PkgName, typeSpec).build();
-        
+
         javaFile.writeTo(System.out);
 //        javaFile.writeTo(filer);
     }

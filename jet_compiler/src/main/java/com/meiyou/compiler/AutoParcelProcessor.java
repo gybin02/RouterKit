@@ -16,7 +16,7 @@ import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.ElementFilter;
 import javax.tools.JavaFileObject;
-
+@Deprecated
 @AutoService(Processor.class)
 @SupportedAnnotationTypes("com.meiyou.annotation.AutoParcel")
 public final class AutoParcelProcessor extends AbstractProcessor {
