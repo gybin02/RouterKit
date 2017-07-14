@@ -11,7 +11,7 @@ import android.widget.Button;
 import com.meiyou.annotation.Test;
 import com.meiyou.jet.annotation.JFindViewOnClick;
 import com.meiyou.jet.process.Jet;
-import com.seeker.tony.myapplication.route.Route;
+import com.meiyou.route.Router;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @JFindViewOnClick(R.id.btn_log)
     Button btn_log;
     String uri = "";
-    Route route = Route.getInstance();
+    Router route = Router.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +89,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     
     
     private void  test(){
-        HelloChina helloChina = new HelloChina();
+        
+//        HelloChina helloChina = new HelloChina();
     }
 
 }

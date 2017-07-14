@@ -7,7 +7,7 @@ package com.meiyou.router;
  * @since 17/7/14
  */
 
-public class RouterConstant {ç
+public class RouterConstant {
 
     public static final String router_pkg = "com.meiyou.router.data";
     public static final String router_class = "RouterTable";

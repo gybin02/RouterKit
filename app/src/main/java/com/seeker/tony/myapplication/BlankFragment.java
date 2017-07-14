@@ -14,7 +14,7 @@ import android.widget.ListView;
 import com.meiyou.jet.annotation.JFindView;
 import com.meiyou.jet.annotation.JFindViewOnClick;
 import com.meiyou.jet.process.Jet;
-import com.seeker.tony.myapplication.route.Route;
+import com.meiyou.route.Router;
 
 /**
  * BLank Fragment
@@ -86,7 +86,7 @@ public class BlankFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         String uri = "";
-        Route route = Route.getInstance();
+        Router route = Router.getInstance();
         int id = v.getId();
         switch (id) {
             case R.id.btn_findView:

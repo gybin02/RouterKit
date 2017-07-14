@@ -3,7 +3,7 @@ package com.seeker.tony.myapplication;
 import android.app.Application;
 import android.content.Context;
 
-import com.seeker.tony.myapplication.route.Route;
+import com.meiyou.route.Router;
 
 /**
  * @author zhengxiaobin@xiaoyouzi.com
@@ -17,7 +17,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         context = this.getApplicationContext();
-        Route.getInstance().init(this);
+        Router.getInstance().init(this);
     }
 
     public static Context getContext() {

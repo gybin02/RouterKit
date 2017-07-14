@@ -1,9 +1,11 @@
 package com.seeker.tony.myapplication.action;
 
+import android.content.Context;
 import android.widget.Toast;
 
 import com.meiyou.annotation.JUriAction;
-import com.seeker.tony.myapplication.route.action.Action;
+import com.meiyou.router.action.Action;
+import com.seeker.tony.myapplication.MyApplication;
 
 import java.util.Map;
 
@@ -14,6 +16,7 @@ import java.util.Map;
 
 @JUriAction("meiyou:///home/action")
 public class TestAction extends Action {
+    Context context = MyApplication.getContext();
 
     @Override
     public void run(Map queryMap) {
