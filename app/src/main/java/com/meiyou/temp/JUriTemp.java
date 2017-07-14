@@ -14,18 +14,13 @@ public class JUriTemp {
     public static final HashMap<String, RouteBean> map = new HashMap();
 
     static {
-        RouteBean bean = new RouteBean();
-        bean.uri = "/home";
-        bean.target = "com.seeker.tony.myapplication.IntentActivity";
-        bean.type = RouteType.UI;
-        map.put(bean.uri, bean);
-        
-        RouteBean bean2 = new RouteBean();
-        bean2.uri = "/home/action";
-        bean2.target = "com.seeker.tony.myapplication.action.TestAction";
-        bean2.type = RouteType.METHOD;
-        map.put(bean.uri, bean);
+        createBean(map,"/home","com.seeker.tony.myapplication.IntentActivity",RouteType.UI);
+        createBean(map,"/home/action","com.seeker.tony.myapplication.action.TestAction",RouteType.METHOD);
     }
 
+    private static void createBean(HashMap<String, RouteBean> map, String uri, String target, RouteType type) {
+        RouteBean bean = new RouteBean(uri, target, type);
+        map.put(uri, bean);
+    }
 
 }
