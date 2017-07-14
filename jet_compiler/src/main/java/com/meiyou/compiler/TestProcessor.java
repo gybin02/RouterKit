@@ -26,7 +26,7 @@ public class TestProcessor extends AbstractProcessor {
     @Override
     public synchronized void init(ProcessingEnvironment processingEnvironment) {
         super.init(processingEnvironment);
-//        filer = processingEnv.getFiler();
+        filer = processingEnv.getFiler();
     }
 
     @Override
@@ -63,7 +63,7 @@ public class TestProcessor extends AbstractProcessor {
             //这里的输出要在Gradle Console中看
             javaFile.writeTo(System.out);
 //            javaFile.writeTo(new File());
-//            javaFile.writeTo(filer);
+            javaFile.writeTo(filer);
 
         } catch (IOException e) {
             e.printStackTrace();

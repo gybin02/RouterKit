@@ -86,5 +86,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     }
+    
+    
+    private void  test(){
+        HelloChina helloChina = new HelloChina();
+    }
 
 }

@@ -20,6 +20,7 @@ import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 
 /**
+ * 直接Build，由于Gradle的配置，代码不变，APT可能不执行，要执行clean + build;
  * @author zhengxiaobin@xiaoyouzi.com
  * @since 17/7/13
  */
