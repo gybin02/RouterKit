@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.meiyou.router.action.Action;
+import com.meiyou.router.data.RouterTable;
 import com.meiyou.router.model.RouteBean;
 import com.meiyou.router.model.RouteType;
 
@@ -46,10 +47,11 @@ public class Router {
     }
 
     private Router() {
-        Class.forName(RouterConstant.router_pkg)
-        
-        
-        uriTable = JUriTemp.map;
+//        Class<?> table = Class.forName(RouterConstant.router_pkg + "." + RouterConstant.router_class);
+//        Action function = (Action) 
+//        RouterTable instance = table.newInstance();
+
+        uriTable = RouterTable.map;
         Log.d(TAG, "uriTable: size = " + uriTable.size());
     }
 
