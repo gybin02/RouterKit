@@ -17,7 +17,7 @@ import model.RouteType;
 public @interface JUri {
 
 
-    String[] value();
+    String value();
 
     /**
      * 类型

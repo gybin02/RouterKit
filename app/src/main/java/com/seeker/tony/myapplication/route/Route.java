@@ -52,27 +52,44 @@ public class Route {
         Log.d(TAG, "uriTable: size = " + uriTable.size());
     }
 
-    public void run(String uri) throws Exception {
+    public void run(String uri) {
 
         if (context == null) {
             Log.e(TAG, "请先初始化JetRoute：");
             return;
         }
-        
-        Uri uriTemp = Uri.parse(uri);
-        if (!checkUri(uriTemp)) {
-            return;
-        }
-        String path = uriTemp.getPath();
-        
-        if (!uriTable.containsKey(path)) {
-            Log.d(TAG, "未找到该路由：" + path);
-            return;
-        }
 
+        try {
+            Uri uriTemp = Uri.parse(uri);
+            if (!checkUri(uriTemp)) {
+                return;
+            }
+            String path = uriTemp.getPath();
+
+            if (!uriTable.containsKey(path)) {
+                Log.d(TAG, "未找到该路由：" + path);
+                return;
+            }
+
+            handleRun(uriTemp);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 处理运行Uri
+     *
+     * @param uri
+     * @throws Exception
+     */
+    private void handleRun(Uri uri) throws Exception {
+        String path = uri.getPath();
         RouteBean bean = uriTable.get(path);
         RouteType type = bean.type;
-        Map<String,String> queryMap = getQuery(uriTemp);
+        Map<String, String> queryMap = getQuery(uri);
+        //页面跳转
         if (type == RouteType.UI) {
             Class clazz = Class.forName(bean.target);
             Intent intent = new Intent(context, clazz);
@@ -83,11 +100,11 @@ public class Route {
         } else {
             Class<?> clazz = Class.forName(bean.target);
             Action function = (Action) clazz.newInstance();
+            //是否要使用Intent传递数据？
 //            Intent intent = new Intent();
 //            fillIntent(intent, queryMap);
             function.run(queryMap);
         }
-
     }
 
     /**

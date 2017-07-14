@@ -12,13 +12,14 @@ import java.util.Set;
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.ProcessingEnvironment;
 import javax.annotation.processing.RoundEnvironment;
+import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.TypeElement;
 
 //@AutoService(Processor.class)
 //对应getSupportedSourceVersion方法
 //@SupportedSourceVersion(SourceVersion.get())
-//@SupportedAnnotationTypes({ "com.example.Test" })
+@SupportedAnnotationTypes({ "com.example.Test" })
 public class TestProcessor extends AbstractProcessor {
 
     @Override
@@ -50,7 +51,6 @@ public class TestProcessor extends AbstractProcessor {
                                     .build();
 
         TypeSpec helloWorld = TypeSpec.classBuilder("HelloWorld")
-                                      //netstat -an | grep .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
                                       .addMethod(main)
                                       .build();
 
