@@ -10,6 +10,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import javax.annotation.processing.AbstractProcessor;
+import javax.annotation.processing.Filer;
 import javax.annotation.processing.ProcessingEnvironment;
 import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
@@ -21,10 +22,11 @@ import javax.lang.model.element.TypeElement;
 //@SupportedSourceVersion(SourceVersion.get())
 @SupportedAnnotationTypes({ "com.meiyou.annotation.Test" })
 public class TestProcessor extends AbstractProcessor {
-
+    private Filer filer;
     @Override
     public synchronized void init(ProcessingEnvironment processingEnvironment) {
         super.init(processingEnvironment);
+//        filer = processingEnv.getFiler();
     }
 
     @Override
@@ -50,7 +52,7 @@ public class TestProcessor extends AbstractProcessor {
                                     .addStatement("$T.out.println($S)", System.class, "Hello, JavaPoet!")
                                     .build();
 
-        TypeSpec helloWorld = TypeSpec.classBuilder("HelloWorld")
+        TypeSpec helloWorld = TypeSpec.classBuilder("HelloChina")
                                       .addMethod(main)
                                       .build();
 
@@ -60,10 +62,13 @@ public class TestProcessor extends AbstractProcessor {
         try {
             //这里的输出要在Gradle Console中看
             javaFile.writeTo(System.out);
+//            javaFile.writeTo(new File());
+//            javaFile.writeTo(filer);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return false;
+        return true;
     }
 
 }
