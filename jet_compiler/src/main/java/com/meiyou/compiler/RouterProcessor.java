@@ -31,7 +31,7 @@ import javax.lang.model.element.TypeElement;
  */
 @AutoService(Processor.class)
 @SupportedAnnotationTypes({"com.meiyou.annotation.JUri"})
-public class RouteProcessor extends AbstractProcessor {
+public class RouterProcessor extends AbstractProcessor {
     /**
      * APT 默认目录
      */

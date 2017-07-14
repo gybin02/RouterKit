@@ -8,11 +8,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.meiyou.annotation.JUri;
 import com.meiyou.jet.annotation.JFindViewOnClick;
 import com.meiyou.jet.process.Jet;
 import com.meiyou.router.Router;
-@JUri("")
+//@JUri("")
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @JFindViewOnClick(R.id.btn_findView)
