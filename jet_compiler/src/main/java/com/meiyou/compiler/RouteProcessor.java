@@ -89,7 +89,7 @@ public class RouteProcessor extends AbstractProcessor {
             String key = entry.getKey();
             String clazz = entry.getValue();
 
-            builder.add("$N.createBean(map,$s, $s);", RouteBean.class, key, clazz);
+            builder.add("$T.createBean(map,$S, $S);", RouteBean.class, key, clazz);
         }
         CodeBlock codeBlock = builder.build();
 
@@ -97,13 +97,14 @@ public class RouteProcessor extends AbstractProcessor {
                                    .initializer(CodeBlock.of("new HashMap()")).build();
 
         TypeSpec typeSpec = TypeSpec.classBuilder(RouterConstant.ClassName)
+                                    .addModifiers(Modifier.PUBLIC)
                                     .addField(field)
                                     .addStaticBlock(codeBlock)
                                     .build();
         JavaFile javaFile = JavaFile.builder(RouterConstant.PkgName, typeSpec).build();
 
         javaFile.writeTo(System.out);
-//        javaFile.writeTo(filer);
+        javaFile.writeTo(filer);
     }
 
 }

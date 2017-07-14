@@ -19,6 +19,7 @@ import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.TypeElement;
 
+@Deprecated
 @AutoService(Processor.class)
 @SupportedAnnotationTypes({ "com.meiyou.annotation.Test" })
 public class TestProcessor extends AbstractProcessor {

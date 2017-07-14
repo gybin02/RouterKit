@@ -3,7 +3,8 @@ package com.seeker.tony.myapplication;
 import android.app.Application;
 import android.content.Context;
 
-import com.meiyou.route.Router;
+import com.meiyou.router.Router;
+
 
 /**
  * @author zhengxiaobin@xiaoyouzi.com

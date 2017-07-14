@@ -8,11 +8,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.meiyou.annotation.Test;
+import com.meiyou.annotation.JUri;
 import com.meiyou.jet.annotation.JFindViewOnClick;
 import com.meiyou.jet.process.Jet;
-import com.meiyou.route.Router;
-
+import com.meiyou.router.Router;
+@JUri("")
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @JFindViewOnClick(R.id.btn_findView)
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-    @Test("")
+    
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -64,8 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         return super.onOptionsItemSelected(item);
     }
-
-    @Test("")
+    
     public void onClick(View view) {
         int id = view.getId();
         switch (id) {

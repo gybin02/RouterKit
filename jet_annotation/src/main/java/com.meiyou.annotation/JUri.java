@@ -1,7 +1,5 @@
 package com.meiyou.annotation;
 
-import com.meiyou.router.model.RouteType;
-
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -23,10 +21,10 @@ public @interface JUri {
 
     String value();
 
-    /**
-     * 类型
-     *
-     * @return
-     */
-    RouteType type() default RouteType.UI;
+//    /**
+//     * 类型
+//     *
+//     * @return
+//     */
+//    RouteType type() default RouteType.UI;
 }
