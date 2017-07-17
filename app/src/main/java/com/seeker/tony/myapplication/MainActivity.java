@@ -74,11 +74,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int id = view.getId();
         switch (id) {
             case R.id.btn_findView:
-                uri = "meiyou:///home";
+                uri = "meiyou:///home?param=\"hello\"";
                 route.run(uri);
                 break;
             case R.id.btn_findview_onclick:
-                uri = "meiyou:///home/action";
+                uri = "meiyou:///home/action?param=1&test=true";
                 route.run(uri);
                 break;
             case R.id.btn_implement:

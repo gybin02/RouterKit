@@ -14,7 +14,7 @@ import java.util.Map;
  * @since 17/7/13
  */
 
-@JUri("meiyou:///home/action")
+@JUri("/home/action")
 public class TestAction extends Action {
     Context context = MyApplication.getContext();
 

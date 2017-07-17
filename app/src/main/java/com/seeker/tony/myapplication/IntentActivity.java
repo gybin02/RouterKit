@@ -11,7 +11,7 @@ import com.meiyou.jet.process.Jet;
 
 import java.io.Serializable;
 
-@JUri("meiyou:///home")
+@JUri("/home")
 public class IntentActivity extends AppCompatActivity {
     @JIntent("stringExtra")
     String stringExtra;

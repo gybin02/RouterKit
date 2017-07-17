@@ -98,7 +98,7 @@ public class RouterProcessor extends AbstractProcessor {
         for (Map.Entry<String, String> entry : map.entrySet()) {
             String key = entry.getKey();
             String clazz = entry.getValue();
-ç
+
             builder.add("$T.createBean(map,$S, $S);", RouteBean.class, key, clazz);
         }
         CodeBlock codeBlock = builder.build();
@@ -113,7 +113,7 @@ public class RouterProcessor extends AbstractProcessor {
                                     .build();
         JavaFile javaFile = JavaFile.builder(RouterConstant.PkgName, typeSpec).build();
 
-        javaFile.writeTo(System.out);
+//        javaFile.writeTo(System.out);
         javaFile.writeTo(filer);
 
     }
