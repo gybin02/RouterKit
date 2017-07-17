@@ -11,6 +11,8 @@ import javax.annotation.processing.ProcessingEnvironment;
 import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
+import javax.annotation.processing.SupportedSourceVersion;
+import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.Elements;
@@ -18,7 +20,7 @@ import javax.lang.model.util.Elements;
 @Deprecated
 @AutoService(Processor.class)
 //对应getSupportedSourceVersion方法
-//@SupportedSourceVersion(SourceVersion.lastestSupported())
+@SupportedSourceVersion(SourceVersion.RELEASE_7)
 //对应getSupportedAnnotationTypes方法
 @SupportedAnnotationTypes({ "com.meiyou.annotation.MethodInfo" })
 public class MethodInfoProcessor extends AbstractProcessor {

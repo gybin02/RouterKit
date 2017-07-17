@@ -19,6 +19,8 @@ import javax.annotation.processing.ProcessingEnvironment;
 import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
+import javax.annotation.processing.SupportedSourceVersion;
+import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
@@ -30,6 +32,7 @@ import javax.lang.model.element.TypeElement;
  * @since 17/7/13
  */
 @AutoService(Processor.class)
+@SupportedSourceVersion(SourceVersion.RELEASE_7)
 @SupportedAnnotationTypes({"com.meiyou.annotation.JUri"})
 public class RouterProcessor extends AbstractProcessor {
     /**
@@ -53,6 +56,8 @@ public class RouterProcessor extends AbstractProcessor {
         try {
             HashMap<String, String> map = new HashMap<>();
             for (TypeElement annotation : annotations) {
+//                System.out.println("anonotation: "+ annotation.toString());
+                
                 Set<? extends Element> elements = roundEnvironment.getElementsAnnotatedWith(annotation);
                 for (Element element : elements) {
                     JUri uri = element.getAnnotation(JUri.class);
@@ -104,8 +109,8 @@ public class RouterProcessor extends AbstractProcessor {
         JavaFile javaFile = JavaFile.builder(RouterConstant.PkgName, typeSpec).build();
 
         javaFile.writeTo(System.out);
-        javaFile.writeTo(filer);
+//        javaFile.writeTo(filer);
     }
-    // TODO: 17/7/14  APT 会执行多次， WriteTO 不成功； 
+    // TODO: 17/7/14  APT 会执行多次， WriteTO 不成功； APT  调试
 
 }

@@ -11,12 +11,16 @@ import javax.annotation.processing.Messager;
 import javax.annotation.processing.ProcessingEnvironment;
 import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
+import javax.annotation.processing.SupportedAnnotationTypes;
+import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 import javax.tools.Diagnostic;
 @Deprecated
+@SupportedSourceVersion(SourceVersion.RELEASE_7)
 @AutoService(Processor.class)
+@SupportedAnnotationTypes("com.meiyou.annotation.Print")
 public class PrintProcessor extends AbstractProcessor {
 
     private Messager mMessager;
