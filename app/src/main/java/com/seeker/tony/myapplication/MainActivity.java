@@ -82,8 +82,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 route.run(uri);
                 break;
             case R.id.btn_implement:
+                uri="meiyou:///moduleb/action";
+                route.run(uri);
                 break;
             case R.id.btn_log:
+                uri="meiyou:///moduleb";
+                route.run(uri);
 //                testLog(10);
 //                testAOP();
                 break;

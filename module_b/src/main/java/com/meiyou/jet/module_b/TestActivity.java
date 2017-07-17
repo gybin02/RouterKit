@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.meiyou.annotation.JUri;
 
-@JUri("/module")
+@JUri("/moduleb")
 public class TestActivity extends AppCompatActivity {
 
     @Override
