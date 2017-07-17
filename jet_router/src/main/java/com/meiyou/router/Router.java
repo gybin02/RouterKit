@@ -7,10 +7,10 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.meiyou.router.action.Action;
-import com.meiyou.router.data.RouterTable;
 import com.meiyou.router.model.RouteBean;
 import com.meiyou.router.model.RouteType;
 
+import java.lang.reflect.Field;
 import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -46,13 +46,27 @@ public class Router {
         this.context = context.getApplicationContext();
     }
 
+    /**
+     * 读取APT生成代码：
+     * 1. 直接先编译代码，在读取类
+     * 2. 反射读取类；
+     * 3. APT数据保存到Asset里面，可以是JSon这样的，然后读取；（未实现）
+     */
     private Router() {
-//        Class<?> table = Class.forName(RouterConstant.PkgName + "." + RouterConstant.ClassName);
-//        Action function = (Action) 
-//        RouterTable instance = table.newInstance();
+        try {
+            Class<?> table = Class.forName(RouterConstant.PkgName + "." + RouterConstant.ClassName);
+            Field field = table.getDeclaredField("map");
+            Object instance = table.newInstance();
 
-        uriTable = RouterTable.map;
-        Log.d(TAG, "uriTable: size = " + uriTable.size());
+            Object data = field.get(instance);
+            if (data instanceof HashMap) {
+                uriTable = (HashMap<String, RouteBean>) data;
+            }
+
+            Log.d(TAG, "uriTable: size = " + uriTable.size());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void run(String uri) {

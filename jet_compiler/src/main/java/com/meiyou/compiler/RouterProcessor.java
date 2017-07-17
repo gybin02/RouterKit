@@ -43,7 +43,7 @@ public class RouterProcessor extends AbstractProcessor {
     @Override
     public synchronized void init(ProcessingEnvironment processingEnvironment) {
         super.init(processingEnvironment);
-        Filer filer = processingEnvironment.getFiler();
+        filer = processingEnvironment.getFiler();
     }
 
     /**
@@ -54,10 +54,15 @@ public class RouterProcessor extends AbstractProcessor {
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnvironment) {
         try {
+            if (annotations == null || annotations.isEmpty()) {
+                System.out.println(">>> annotations is null... <<<");
+                return true;
+            }
+
             HashMap<String, String> map = new HashMap<>();
             for (TypeElement annotation : annotations) {
 //                System.out.println("anonotation: "+ annotation.toString());
-                
+
                 Set<? extends Element> elements = roundEnvironment.getElementsAnnotatedWith(annotation);
                 for (Element element : elements) {
                     JUri uri = element.getAnnotation(JUri.class);
@@ -93,32 +98,26 @@ public class RouterProcessor extends AbstractProcessor {
         for (Map.Entry<String, String> entry : map.entrySet()) {
             String key = entry.getKey();
             String clazz = entry.getValue();
-
+ç
             builder.add("$T.createBean(map,$S, $S);", RouteBean.class, key, clazz);
         }
         CodeBlock codeBlock = builder.build();
 
-        FieldSpec field = FieldSpec.builder(HashMap.class, "map", Modifier.PUBLIC)
+        FieldSpec field = FieldSpec.builder(HashMap.class, "map", Modifier.PUBLIC, Modifier.STATIC)
                                    .initializer(CodeBlock.of("new HashMap()")).build();
 
         TypeSpec typeSpec = TypeSpec.classBuilder(RouterConstant.ClassName)
                                     .addModifiers(Modifier.PUBLIC)
-                                    .addField(field)
                                     .addStaticBlock(codeBlock)
+                                    .addField(field)
                                     .build();
         JavaFile javaFile = JavaFile.builder(RouterConstant.PkgName, typeSpec).build();
 
-//        javaFile.writeTo(System.out);
-//        javaFile.writeTo(filer);
-
-//            Writer writer = javaFile.toJavaFileObject().openWriter();
-//            try {
-//                writer.write(text);
-//            } finally {
-//                writer.close();
-//            }
+        javaFile.writeTo(System.out);
+        javaFile.writeTo(filer);
 
     }
+
     // TODO: 17/7/14  APT 会执行两次次， WriteTO 不成功； APT  调试
 
 }
