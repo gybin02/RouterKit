@@ -69,6 +69,16 @@ public class Router {
         }
     }
 
+    public void run(Uri uri) {
+        
+    }
+    
+
+    /**
+     * Main Method
+     *
+     * @param uri
+     */
     public void run(String uri) {
 
         if (context == null) {

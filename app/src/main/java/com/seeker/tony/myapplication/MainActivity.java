@@ -95,6 +95,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void test() {
         HashMap map = RouterTable.map;
         Log.w(TAG, "test: " + map.size());
+//        URI uri = new URI("");
+//        Uri.parse()
 //        HelloChina helloChina = new HelloChina();
     }
 

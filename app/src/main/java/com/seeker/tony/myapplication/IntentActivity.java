@@ -12,6 +12,9 @@ import com.meiyou.jet.process.Jet;
 
 import java.io.Serializable;
 
+/**
+ * Uri 的参数通过 Intent传递进来
+ */
 @JUri("/home")
 public class IntentActivity extends AppCompatActivity {
     @JIntent("stringExtra")

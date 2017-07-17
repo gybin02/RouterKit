@@ -10,18 +10,21 @@ import com.seeker.tony.myapplication.MyApplication;
 import java.util.Map;
 
 /**
+ * 测试URI 使用Action
+ *
  * @author zhengxiaobin@xiaoyouzi.com
  * @since 17/7/13
  */
 
-@JUri("/home/action")
+@JUri("/action")
 public class TestAction extends Action {
     Context context = MyApplication.getContext();
 
     @Override
     public void run(Map queryMap) {
         super.run(queryMap);
+        //Uri 里面的参数通过Map传递进来
         String result = (String) queryMap.get("param");
-        Toast.makeText(context, "Test Action: "+result, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "Test Action: " + result, Toast.LENGTH_SHORT).show();
     }
 }
