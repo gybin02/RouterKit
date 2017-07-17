@@ -21,6 +21,7 @@ public class TestAction extends Action {
     @Override
     public void run(Map queryMap) {
         super.run(queryMap);
-        Toast.makeText(context, "Test Action", Toast.LENGTH_SHORT).show();
+        String result = (String) queryMap.get("param");
+        Toast.makeText(context, "Test Action: "+result, Toast.LENGTH_SHORT).show();
     }
 }

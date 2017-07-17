@@ -21,6 +21,10 @@ public class Action {
 //
 //    }
 
+    /**
+     * 参数，解析出成Map传入
+     * @param queryMap
+     */
     public void run(Map queryMap) {
 
     }

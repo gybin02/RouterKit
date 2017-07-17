@@ -1,5 +1,6 @@
 package com.seeker.tony.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -42,8 +43,9 @@ public class IntentActivity extends AppCompatActivity {
 //        Serializable serializable = intent.getSerializableExtra("serializable");
 //        Bundle bundle = intent.getBundleExtra("bundle");
 //        String[] stringArrays = intent.getStringArrayExtra("stringArray");
+        Intent intent = getIntent();
 
-        Log.e("intent", "intent test");
+        Log.e("intent", "intent test：" + intent.getExtras().toString());
 //        View content = findViewById(R.id.fl_content);
         BlankFragment blankFragment = BlankFragment.newInstance(this);
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

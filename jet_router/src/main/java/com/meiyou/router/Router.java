@@ -27,7 +27,7 @@ import java.util.Map;
  */
 
 public class Router {
-    private static final String TAG = "Route";
+    private static final String TAG = "Router";
     private static Router instance;
     /**
      * 路由表
