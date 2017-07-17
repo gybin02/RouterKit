@@ -108,9 +108,17 @@ public class RouterProcessor extends AbstractProcessor {
                                     .build();
         JavaFile javaFile = JavaFile.builder(RouterConstant.PkgName, typeSpec).build();
 
-        javaFile.writeTo(System.out);
+//        javaFile.writeTo(System.out);
 //        javaFile.writeTo(filer);
+
+//            Writer writer = javaFile.toJavaFileObject().openWriter();
+//            try {
+//                writer.write(text);
+//            } finally {
+//                writer.close();
+//            }
+
     }
-    // TODO: 17/7/14  APT 会执行多次， WriteTO 不成功； APT  调试
+    // TODO: 17/7/14  APT 会执行两次次， WriteTO 不成功； APT  调试
 
 }

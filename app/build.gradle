@@ -34,7 +34,5 @@ dependencies {
     compile 'com.android.support:design:25.0.1'
     testCompile 'junit:junit:4.12'
     compile 'com.meiyou.framework:jet:1.0.0'
-//    compile project(':jet_aspect')
-//    compile 'org.aspectj:aspectjrt:1.8.9'
     
 }
