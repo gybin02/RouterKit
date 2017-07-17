@@ -3,7 +3,6 @@ package com.seeker.tony.myapplication;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,9 +11,6 @@ import android.widget.Button;
 import com.meiyou.jet.annotation.JFindViewOnClick;
 import com.meiyou.jet.process.Jet;
 import com.meiyou.router.Router;
-import com.meiyou.router.data.RouterTable;
-
-import java.util.HashMap;
 
 //@JUri("")
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -97,8 +93,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //    @Test("")
     private void test() {
-        HashMap map = RouterTable.map;
-        Log.w(TAG, "test: " + map.size());
+//        HashMap map = RouterTable.map;
+//        Log.w(TAG, "test: " + map.size());
 //        URI uri = new URI("");
 //        Uri.parse()
 //        HelloChina helloChina = new HelloChina();
