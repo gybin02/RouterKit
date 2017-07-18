@@ -10,11 +10,17 @@ import com.meiyou.router.action.Action;
 import com.meiyou.router.model.RouteBean;
 import com.meiyou.router.model.RouteType;
 
+import java.io.IOException;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+
+import dalvik.system.DexFile;
 
 /**
  * 实现Route功能，
@@ -216,6 +222,42 @@ public class Router {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+
+
+    public void registerAll() throws Exception{
+        String[] classes = getClassesFromPackage(context, RouterConstant.PkgName);
+        for (String  clazzName: classes) {
+            Class<?> clazz = Class.forName(clazzName);
+            Method register = clazz.getMethod("register");
+            register.invoke(null);
+        }
+
+    }
+    /**
+     * 获取包名下所有的类，小心性能
+     *
+     * @param context
+     * @param packageName
+     * @return
+     */
+    private static String[] getClassesFromPackage(Context context, String packageName) {
+        ArrayList<String> classes = new ArrayList<String>();
+        try {
+            DexFile df = new DexFile(context.getPackageCodePath());
+            Enumeration<String> entries = df.entries();
+            while (entries.hasMoreElements()) {
+                String className = (String) entries.nextElement();
+                if (className.contains(packageName)) {
+                    classes.add(className);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return classes.toArray(new String[]{});
     }
 
 
