@@ -3,7 +3,7 @@ package com.meiyou.compiler;
 import com.google.auto.service.AutoService;
 import com.meiyou.annotation.JUri;
 import com.meiyou.router.RouterConstant;
-import com.meiyou.router.model.RouteBean;
+import com.meiyou.router.model.RouterBean;
 import com.squareup.javapoet.CodeBlock;
 import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
@@ -22,7 +22,6 @@ import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
-import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 
 /**
@@ -99,9 +98,10 @@ public class RouterProcessor extends AbstractProcessor {
             String key = entry.getKey();
             String clazz = entry.getValue();
 
-            builder.add("$T.createBean(map,$S, $S);", RouteBean.class, key, clazz);
+            builder.add("$T.createBean(map,$S, $S);", RouterBean.class, key, clazz);
         }
         CodeBlock codeBlock = builder.build();
+
 
         FieldSpec field = FieldSpec.builder(HashMap.class, "map", Modifier.PUBLIC, Modifier.STATIC)
                                    .initializer(CodeBlock.of("new HashMap()")).build();
@@ -113,8 +113,10 @@ public class RouterProcessor extends AbstractProcessor {
                                     .build();
         JavaFile javaFile = JavaFile.builder(RouterConstant.PkgName, typeSpec).build();
 
-//        javaFile.writeTo(System.out);
-        javaFile.writeTo(filer);
+        javaFile.writeTo(System.out);
+
+
+//        javaFile.writeTo(filer);
 
     }
 

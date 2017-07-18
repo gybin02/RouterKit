@@ -5,7 +5,7 @@ package com.meiyou.router.model;
  * Ui: 页面跳转
  * Method：方法调用
  */
-public enum RouteType {
+public enum RouterType {
     UI,
     METHOD
 }

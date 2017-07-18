@@ -1,6 +1,6 @@
 package com.meiyou.router.data;
 
-import com.meiyou.router.model.RouteBean;
+import com.meiyou.router.model.RouterBean;
 
 import java.util.HashMap;
 
@@ -12,9 +12,9 @@ import java.util.HashMap;
  */
 
 public class RouterTable {
-    public static HashMap<String, RouteBean> map = new HashMap<>();
+    public static HashMap<String, RouterBean> map = new HashMap<>();
 
-    public static void registerRouter(String uri, RouteBean bean) {
+    public static void registerRouter(String uri, RouterBean bean) {
         map.put(uri, bean);
     }
 

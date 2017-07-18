@@ -7,11 +7,11 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.meiyou.router.action.Action;
-import com.meiyou.router.model.RouteBean;
-import com.meiyou.router.model.RouteType;
+import com.meiyou.router.data.RouterTable;
+import com.meiyou.router.model.RouterBean;
+import com.meiyou.router.model.RouterType;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.URLDecoder;
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ public class Router {
     /**
      * 路由表
      */
-    private HashMap<String, RouteBean> uriTable = new HashMap<>();
+    private HashMap<String, RouterBean> uriTable = new HashMap<>();
     private Context context;
 
     public static Router getInstance() {
@@ -59,15 +59,17 @@ public class Router {
      */
     private Router() {
         try {
-            Class<?> table = Class.forName(RouterConstant.PkgName + "." + RouterConstant.ClassName);
-            Field field = table.getDeclaredField("map");
-            Object instance = table.newInstance();
+//            Class<?> table = Class.forName(RouterConstant.PkgName + "." + RouterConstant.ClassName);
+//            Field field = table.getDeclaredField("map");
+//            Object instance = table.newInstance();
+//
+//            Object data = field.get(instance);
+//            if (data instanceof HashMap) {
+//                uriTable = (HashMap<String, RouteBean>) data;
+//            }
 
-            Object data = field.get(instance);
-            if (data instanceof HashMap) {
-                uriTable = (HashMap<String, RouteBean>) data;
-            }
-
+            registerAll();
+            uriTable = RouterTable.map;
             Log.d(TAG, "uriTable: size = " + uriTable.size());
         } catch (Exception e) {
             e.printStackTrace();
@@ -119,11 +121,11 @@ public class Router {
      */
     private void handleRun(Uri uri) throws Exception {
         String path = uri.getPath();
-        RouteBean bean = uriTable.get(path);
-        RouteType type = bean.type;
+        RouterBean bean = uriTable.get(path);
+        RouterType type = bean.type;
         Map<String, String> queryMap = getQuery(uri);
         //页面跳转
-        if (type == RouteType.UI) {
+        if (type == RouterType.UI) {
             Class clazz = Class.forName(bean.target);
             Intent intent = new Intent(context, clazz);
             fillIntent(intent, queryMap);
@@ -142,25 +144,27 @@ public class Router {
 
     /**
      * Check uri 是否有效
+     * <p>
+     * String mHost = uri.getHost();
+     * String mScheme = uri.getScheme();
+     * String mPath = uri.getPath();
+     * String mQuery = uri.getQuery();
+     * [scheme:][//authority][path][?query][#fragment]
+     * URL:http://developer.android.com/referencejava/net/URL.html?s=a#getRef()
+     * 那么它的各个属性的值就为：
+     * Authority是:developer.android.com
+     * Host是:developer.android.com
+     * Port是：-1
+     * File是/referencejava/net/ URL.html?s=a
+     * Path是/referencejava/net/URL.html
+     * Query是：s=a
      *
      * @param uri
      * @return true，有效，
      */
     private boolean checkUri(Uri uri) {
         return true;
-//        String mHost = uri.getHost();
-//        String mScheme = uri.getScheme();
-//        String mPath = uri.getPath();
-//        String mQuery = uri.getQuery();
-//        [scheme:][//authority][path][?query][#fragment]  
-//        URL:http://developer.android.com/referencejava/net/URL.html?s=a#getRef()
-//        那么它的各个属性的值就为：
-//        Authority是:developer.android.com
-//        Host是:developer.android.com
-//        Port是：-1
-//        File是/referencejava/net/ URL.html?s=a
-//        Path是/referencejava/net/URL.html
-//        Query是：s=a
+
     }
 
     /**
@@ -225,16 +229,16 @@ public class Router {
     }
 
 
-
-    public void registerAll() throws Exception{
+    public void registerAll() throws Exception {
         String[] classes = getClassesFromPackage(context, RouterConstant.PkgName);
-        for (String  clazzName: classes) {
+        for (String clazzName : classes) {
             Class<?> clazz = Class.forName(clazzName);
             Method register = clazz.getMethod("register");
             register.invoke(null);
         }
 
     }
+
     /**
      * 获取包名下所有的类，小心性能
      *

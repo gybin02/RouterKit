@@ -1,6 +1,6 @@
 package com.meiyou.router.data;
 
-import com.meiyou.router.model.RouteBean;
+import com.meiyou.router.model.RouterBean;
 
 /**
  * 生成的代码
@@ -12,10 +12,10 @@ import com.meiyou.router.model.RouteBean;
 public class RouterTableSample {
 
     public static void register() {
-        RouteBean bean = RouteBean.createBean("/action", "com.seeker.tony.myapplication.action.TestAction");
+        RouterBean bean = RouterBean.createBean("/action", "com.seeker.tony.myapplication.action.TestAction");
         RouterTable.registerRouter(bean.uri, bean);
 
-        RouteBean.createBean("/home", "com.seeker.tony.myapplication.IntentActivity");
+        RouterBean.createBean("/home", "com.seeker.tony.myapplication.IntentActivity");
         RouterTable.registerRouter(bean.uri, bean);
     }
 }
