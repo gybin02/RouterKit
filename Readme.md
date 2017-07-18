@@ -22,7 +22,8 @@
 ![URI定义](http://upload-images.jianshu.io/upload_images/53953-054d5e9096445d84.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ### 使用范例 
-- 声明1: 页面跳转；
+- 声明1: 页面跳转
+
 ```java
 @JUri("/home")
 public class IntentActivity extends AppCompatActivity {
@@ -46,8 +47,9 @@ public class TestAction extends Action {
     }
 }
     
-``` 
-- 调用
+```
+- 方法调用
+
 ```java
                 // 方式一
                 String uri = "meiyou:///home";
@@ -97,7 +99,7 @@ Router.setFilter(new Filter() {
 
 ### 混淆
 ### 常见问题
-* 参考[Android 组件化 —— 路由设计最佳实践]（http://www.jianshu.com/p/8a3eeeaf01e8）
+* 参考[Android 组件化 —— 路由设计最佳实践](http://www.jianshu.com/p/8a3eeeaf01e8)
 * [开源最佳实践：Android平台页面路由框架ARouter](https://yq.aliyun.com/articles/71687?spm=5176.100240.searchblog.7.8os9Go)
 
 ### License
