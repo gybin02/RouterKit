@@ -13,7 +13,6 @@ import com.meiyou.router.model.RouteType;
 import java.lang.reflect.Field;
 import java.net.URLDecoder;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -208,11 +207,9 @@ public class Router {
     private void fillIntent(Intent intent, Map<String, String> queryMap) {
         try {
             if (queryMap != null) {
-                Iterator iter = queryMap.entrySet().iterator();
-                while (iter.hasNext()) {
-                    Map.Entry entry = (Map.Entry) iter.next();
-                    String key = (String) entry.getKey();
-                    String value = (String) entry.getValue();
+                for (Map.Entry<String, String> entry : queryMap.entrySet()) {
+                    String key = entry.getKey();
+                    String value = entry.getValue();
                     intent.putExtra(key, value);
                 }
             }

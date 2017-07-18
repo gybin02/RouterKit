@@ -37,4 +37,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.meiyou.framework:jet:1.0.0'
     
+//    annotationProcessor project(':jet_compiler')
+    
 }
