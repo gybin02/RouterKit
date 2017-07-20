@@ -24,11 +24,11 @@ public class RouterBean {
      * @param uri
      * @param target
      */
-    public static RouterBean createBean(String uri, String target) {
+    public RouterBean(String uri, String target) {
         RouterType type = getType(target);
-        RouterBean bean = new RouterBean(uri, target, type);
-        return bean;
-//        map.put(uri, bean);
+        this.uri = uri;
+        this.target = target;
+        this.type = type;
     }
 
     /**

@@ -28,6 +28,8 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
     compile project(':jet_annotation')
+    compile 'com.google.code.gson:gson:2.2.4'
+    
     //使用compile 也会使用APT生成代码，而且是模块间依赖会传递
 //    compile project(':jet_compiler')
 

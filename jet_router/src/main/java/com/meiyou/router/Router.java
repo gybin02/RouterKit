@@ -2,16 +2,19 @@ package com.meiyou.router;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.google.gson.Gson;
 import com.meiyou.router.action.Action;
 import com.meiyou.router.data.RouterTable;
 import com.meiyou.router.model.RouterBean;
 import com.meiyou.router.model.RouterType;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.net.URLDecoder;
 import java.util.ArrayList;
@@ -230,14 +233,47 @@ public class Router {
 
 
     public void registerAll() throws Exception {
-        //不使用反射读取；
+        HashMap routerMap = new HashMap();
+        AssetManager assetManager = context.getResources().getAssets();
+        String[] list = assetManager.list("/router");
+        for (String path : list) {
+            InputStream inputStream = assetManager.open(path);
+            String s = InputStream2String(inputStream);
+            Map<String, String> map = new Gson().fromJson(s, Map.class);
+            routerMap.putAll(map);
+//            for (Map.Entry<String, String> entry : map.entrySet()) {
+//                String key = entry.getKey();
+//                String value = entry.getValue();
+//                RouterBean bean = new RouterBean(key, value);
+//            }
+        }
+
+    }
+
+    private static String InputStream2String(InputStream is) {
+        String result = "";
+        try {
+            byte[] buffer = new byte[is.available()];
+            is.read(buffer);//输出流
+            result = new String(buffer, "utf-8");
+            is.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 使用反射读取,路由表
+     *
+     * @throws Exception
+     */
+    private void register() throws Exception {
         String[] classes = getClassesFromPackage(context, RouterConstant.PkgName);
         for (String clazzName : classes) {
             Class<?> clazz = Class.forName(clazzName);
             Method register = clazz.getMethod("register");
             register.invoke(null);
         }
-
     }
 
     /**
