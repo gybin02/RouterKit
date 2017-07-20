@@ -1,14 +1,16 @@
 package com.meiyou.compiler;
 
 import com.google.auto.service.AutoService;
+import com.google.gson.Gson;
 import com.meiyou.annotation.JUri;
 import com.meiyou.router.RouterConstant;
 import com.meiyou.router.model.RouterBean;
 import com.squareup.javapoet.CodeBlock;
-import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.TypeSpec;
 
+import java.io.IOException;
+import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -22,7 +24,11 @@ import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
+import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
+import javax.lang.model.util.Types;
+import javax.tools.FileObject;
+import javax.tools.StandardLocation;
 
 /**
  * 直接Build，由于Gradle的配置，代码不变，APT可能不执行，要执行clean + build;
@@ -34,15 +40,25 @@ import javax.lang.model.element.TypeElement;
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
 @SupportedAnnotationTypes({"com.meiyou.annotation.JUri"})
 public class RouterProcessor extends AbstractProcessor {
+
+        static final String METADATA_PATH = "META-INF/spring-configuration-metadata.json";
+    public static final String ASSET_JSON="assets/router/module.json";
+//    public static final String ASSET_PATH = "assets/";
+//            "router/";
+    public static final String FILE_SUFFIX = ".json";
+
     /**
      * APT 默认目录
      */
     Filer filer;
+    private Types types;
 
     @Override
     public synchronized void init(ProcessingEnvironment processingEnvironment) {
         super.init(processingEnvironment);
         filer = processingEnvironment.getFiler();
+        types = processingEnvironment.getTypeUtils();
+
     }
 
     /**
@@ -98,28 +114,74 @@ public class RouterProcessor extends AbstractProcessor {
             String key = entry.getKey();
             String clazz = entry.getValue();
 
-            builder.add("$T.createBean(map,$S, $S);", RouterBean.class, key, clazz);
+            builder.add("$T.createBean($S, $S);", RouterBean.class, key, clazz);
         }
         CodeBlock codeBlock = builder.build();
 
 
-        FieldSpec field = FieldSpec.builder(HashMap.class, "map", Modifier.PUBLIC, Modifier.STATIC)
-                                   .initializer(CodeBlock.of("new HashMap()")).build();
+//        FieldSpec field = FieldSpec.builder(HashMap.class, "map", Modifier.PUBLIC, Modifier.STATIC)
+//                                   .initializer(CodeBlock.of("new HashMap()")).build();
 
-        TypeSpec typeSpec = TypeSpec.classBuilder(RouterConstant.ClassName)
+        TypeSpec typeSpec = TypeSpec.classBuilder(RouterConstant.ClassName+"$$1")
                                     .addModifiers(Modifier.PUBLIC)
                                     .addStaticBlock(codeBlock)
-                                    .addField(field)
+//                                    .addField(field)
                                     .build();
         JavaFile javaFile = JavaFile.builder(RouterConstant.PkgName, typeSpec).build();
 
-        javaFile.writeTo(System.out);
+//        javaFile.writeTo(System.out);
+//        String content = javaFile.toString();
+        javaFile.writeTo(filer);
 
-
-//        javaFile.writeTo(filer);
+        String content = new Gson().toJson(map);
+        System.out.println(">>> content:... <<<   " + content);
+        writeFile(content);
+        
 
     }
+    
+    
 
-    // TODO: 17/7/14  APT 会执行两次次， WriteTO 不成功； APT  调试
+    // TODO: 17/7/14  APT 会执行两次， WriteTO 不成功； APT  调试
+
+
+    private void writeFile(String content) throws Exception {
+        FileObject fileObject = createResource();
+//        FileObject fileObject = createSourcePath();
+        
+        Writer writer = fileObject.openWriter();
+        writer.write(content);
+        writer.close();
+
+        System.out.println("Done");
+    }
+
+
+    
+    private FileObject createResource() throws IOException {
+        String string = types.toString();
+        int hashCode = types.hashCode();
+        System.out.println("typename:  "+string+"   hashCode: " + hashCode);
+
+//        String path = ASSET_PATH + hashCode + FILE_SUFFIX;
+        String path = ASSET_JSON;
+//        String path =METADATA_PATH;
+        FileObject resource = filer
+                .createResource(StandardLocation.CLASS_OUTPUT, "", path);
+                
+//        filer.createSourceFile("com.test");
+        return resource;
+    }
+
+    private FileObject createSourcePath() throws IOException {
+//        String string = types.toString();
+//        int hashCode = types.hashCode();
+//        System.out.println("typename:  "+string+"   hashCode: " + hashCode);
+
+        FileObject resource = filer
+                .createSourceFile("com.test.go."+RouterConstant.ClassName+"$$1");
+        return resource;
+    }
+
 
 }

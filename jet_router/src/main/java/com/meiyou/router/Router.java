@@ -230,6 +230,7 @@ public class Router {
 
 
     public void registerAll() throws Exception {
+        //不使用反射读取；
         String[] classes = getClassesFromPackage(context, RouterConstant.PkgName);
         for (String clazzName : classes) {
             Class<?> clazz = Class.forName(clazzName);

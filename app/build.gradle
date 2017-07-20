@@ -27,16 +27,39 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-//    compile project(':jet_router')
+    compile project(':jet_router')
 //    annotationProcessor project(':jet_compiler')
 
-    compile project(':module_b')
+//    compile project(':module_b')
     compile 'com.android.support:appcompat-v7:25.0.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
     compile 'com.android.support:design:25.0.1'
     testCompile 'junit:junit:4.12'
     compile 'com.meiyou.framework:jet:1.0.0'
-    
+
 //    annotationProcessor project(':jet_compiler')
-    
+    compile project(':jet_compiler')
+
+}
+
+//拷贝生成 META-INF 文件进去
+//android.applicationVariants.all { variant ->
+//    def variantName = variant.name
+//    def variantNameCapitalized = variantName.capitalize()
+//    def copyMetaInf = tasks.create "copyMetaInf$variantNameCapitalized", Copy
+//    copyMetaInf.from project.fileTree(javaCompile.destinationDir)
+//    copyMetaInf.include "META-INF/**"
+//    copyMetaInf.into "build/intermediates/sourceFolderJavaResources/$variantName"
+//    tasks.findByName("transformResourcesWithMergeJavaResFor$variantNameCapitalized").dependsOn copyMetaInf
+//}
+
+//拷贝生成的 assets/目录到打包目录
+android.applicationVariants.all { variant ->
+    def variantName = variant.name
+    def variantNameCapitalized = variantName.capitalize()
+    def copyMetaInf = tasks.create "copyMetaInf$variantNameCapitalized", Copy
+    copyMetaInf.from project.fileTree(javaCompile.destinationDir)
+    copyMetaInf.include "assets/**"
+    copyMetaInf.into "build/intermediates/sourceFolderJavaResources/$variantName"
+    tasks.findByName("transformResourcesWithMergeJavaResFor$variantNameCapitalized").dependsOn copyMetaInf
 }
