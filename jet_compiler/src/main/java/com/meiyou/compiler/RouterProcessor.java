@@ -89,14 +89,18 @@ public class RouterProcessor extends AbstractProcessor {
 
                     String value = uri.value();
                     String[] array = uri.array();
-                    ArrayList<String> list=new ArrayList<>();
+                    ArrayList<String> list = new ArrayList<>();
                     list.add(value);
                     list.addAll(Arrays.asList(array));
                     String clazzName = typeElement.getQualifiedName().toString();
                     for (String key : list) {
-                        map.put(key, clazzName);   
+                        //避免Key是空的情况
+                        if (key.length() == 0) {
+                            break;
+                        }
+                        map.put(key, clazzName);
                     }
-                    
+
                 }
             }
             //生成Java代码
