@@ -35,7 +35,21 @@ dependencies {
 
 //    annotationProcessor project(':jet_compiler')
 
-    compile project(':jet_annotation')
+    if (doPackage == "True") {
+        compile project(':jet_annotation')
+    } else {
+        compile "com.meiyou.framework:router-annotation:${DEPLOY_VERSION}"
+    }
+
+
+    //    annotationProcessor project(':jet_compiler')
+//    provided project(':jet_compiler')
+
+    if (doPackage == "True") {
+        compile project(':jet_compiler')
+    } else {
+        compile "com.meiyou.framework:router-compiler:${DEPLOY_VERSION}"
+    }
 
     apply from:rootProject.file("mvn.gradle")
 }
