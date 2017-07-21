@@ -18,8 +18,9 @@
 - Apt实现自动路由注册，支持多Module
 - 路由表维护
 - Activity转发 和 Action转发（支持URI页面跳转和方法调用）
-
+### 原理图
 ![原理图](http://upload-images.jianshu.io/upload_images/53953-ce3ffb119e0d6534.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 ![URI定义](http://upload-images.jianshu.io/upload_images/53953-054d5e9096445d84.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
