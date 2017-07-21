@@ -27,16 +27,18 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile project(':jet_router')
+//    compile project(':jet_router')
 //    annotationProcessor project(':jet_compiler')
 
-    compile project(':module_b')
+ 
     compile 'com.android.support:appcompat-v7:25.0.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
     compile 'com.android.support:design:25.0.1'
     testCompile 'junit:junit:4.12'
     compile 'com.meiyou.framework:jet:1.0.0'
 
+    compile project(':module_b')
+    
     //测试使用 编译器编译；
 //    annotationProcessor project(':jet_compiler')
 //    compile project(':jet_compiler')
