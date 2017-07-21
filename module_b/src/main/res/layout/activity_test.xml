@@ -6,5 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.meiyou.jet.module_b.TestActivity">
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="This is ModuleB Activity"
+        android:layout_height="wrap_content"/>
+        
 
 </android.support.constraint.ConstraintLayout>

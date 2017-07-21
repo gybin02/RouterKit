@@ -64,23 +64,23 @@ public class Router {
     }
 
     public void init(Context context) {
-        this.context = context.getApplicationContext();
+        try {
+            this.context = context.getApplicationContext();
+            registerAll();
+            Log.d(TAG, "routerTable: size = " + routerTable.size());
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
     }
 
     /**
      * 读取APT生成代码：
      * 1. 直接先编译代码，在读取类
      * 2. 反射读取类；
-     * 3. APT数据保存到Asset里面，可以是JSon这样的，然后读取；（未实现）
+     * 3. APT数据保存到Asset里面，可以是JSon这样的，然后读取；
      */
     private Router() {
-        try {
-            registerAll();
-//            routerTable = RouterTable.map;
-            Log.d(TAG, "routerTable: size = " + routerTable.size());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
     }
 
     public void run(Uri uri) {
