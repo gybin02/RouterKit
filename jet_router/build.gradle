@@ -29,7 +29,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:support-annotations:25.0.1'
     compile 'com.google.code.gson:gson:2.2.4'
-    
+
     //使用compile 也会使用APT生成代码，而且是模块间依赖会传递
 //    compile project(':jet_compiler')
 
@@ -41,9 +41,12 @@ dependencies {
         compile "com.meiyou.framework:router-annotation:${DEPEND_VERSION}"
     }
 
-
+    //也只会当前Module有效
     //    annotationProcessor project(':jet_compiler')
+    //provided 只会在当前Module编译，不会被打包到AAR
 //    provided project(':jet_compiler')
+//    compile依赖会被传递到上层
+//    compile project(':jet_compiler')
 
     if (doPackage == "True") {
         compile project(':jet_compiler')
@@ -51,5 +54,5 @@ dependencies {
         compile "com.meiyou.framework:router-compiler:${DEPEND_VERSION}"
     }
 
-    apply from:rootProject.file("mvn.gradle")
+    apply from: rootProject.file("mvn.gradle")
 }
