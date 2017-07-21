@@ -1,5 +1,5 @@
 # Jet Route
-美柚路由库；Android平台页面、服务路由框架
+美柚路由库；Android平台对页面、服务的路由框架。自动化且易用。
 
 基于apt技术，通过注解方式来实现URL打开Activity功能，并支持在WebView和外部浏览器使用，支持多级Activity跳转，支持Bundle、Uri参数注入并转换参数类型。
 
@@ -23,6 +23,12 @@
 
 ![URI定义](http://upload-images.jianshu.io/upload_images/53953-054d5e9096445d84.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+### 典型应用
+1. 从外部URL映射到内部页面，以及参数传递与解析
+2. 跨模块页面跳转，模块间解耦
+3. 拦截跳转过程，处理登陆、埋点等逻辑
+4. 跨模块API调用，通过控制反转来做组件解耦
+
 ### 使用范例 
 - 声明1: 页面跳转
 
@@ -34,8 +40,9 @@ public class IntentActivity extends AppCompatActivity {
     //
 }
 ```
-- or 声明2： 功能调用：
+- or 声明2： 服务功能调用：
 ```java
+//支持，多个地址 @JUri(array={"/home","/action"})
 @JUri("/action")
 public class TestAction extends Action {
     Context context = MyApplication.getContext();
@@ -53,16 +60,20 @@ public class TestAction extends Action {
 - 方法调用
 
 ```java
-                // 方式一
-                String uri = "meiyou:///home";
-                Router.getInstance().run(uri);
-   
-                // 方式二
-                Router.getInstance().run(context, Uri.parse("meiyou:///second?uid=233"));
-                
-                // 方式三
-                // 如果AndroidManifest.xml注册了RouterCenterActivity，也可以通过下面的方式打开，如果是APP内部使用，不建议使用。
-                // startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("meiyou:///home?uid=233")));
+    // 尽可能早，推荐在Application中初始化,初始化路由表
+    Router.getInstance().init(mApplication);
+
+
+    // 方式一
+    String uri = "meiyou:///home";
+    Router.getInstance().run(uri);
+
+    // 方式二
+    Router.getInstance().run(context, Uri.parse("meiyou:///second?uid=233"));
+    
+    // 方式三
+    // 如果AndroidManifest.xml注册了RouterCenterActivity，也可以通过下面的方式打开，如果是APP内部使用，不建议使用。
+    // startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("meiyou:///home?uid=233")));
 ```
 
 ### 从外部浏览器、其它APP打开
@@ -87,7 +98,7 @@ startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("meiyou:///second?uid=233
 
 ```
 
-### 支持前置拦截器
+### 支持拦截器，典型应用就是：某些URI需要授权才能访问
 
 通过前置拦截器可以对URL进行拦截，可以通过拦截器对URL进行修改，也可以拦截URL，不让路由器打开。
 ```java
@@ -119,6 +130,8 @@ compile "com.meiyou.framework:router:0.0.1-SNAPSHOT"
 - Module传递依赖解决
 - 自定义 注解实现
 -  Gradle Plugin实现
+- 拦截器排序
+- 路由匹配规则Matcher功能
 - 
 
 ### License
