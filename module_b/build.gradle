@@ -28,11 +28,12 @@ dependencies {
     })
 
     compile project(':jet_router')
-
-//    annotationProcessor project(':jet_compiler')
-
-    provided project(':jet_compiler')
+    
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
     testCompile 'junit:junit:4.12'
+
+    //    annotationProcessor project(':jet_compiler')
+//    provided project(':jet_compiler')
+    compile project(':jet_compiler')
 }

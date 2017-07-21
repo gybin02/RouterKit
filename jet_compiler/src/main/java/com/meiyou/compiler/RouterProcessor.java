@@ -158,7 +158,7 @@ public class RouterProcessor extends AbstractProcessor {
      * @param map
      */
     @Deprecated
-    private void createSource(HashMap<String, String> map) {
+    private void createSource(HashMap<String, String> map) throws Exception {
         CodeBlock.Builder builder = CodeBlock.builder();
         for (Map.Entry<String, String> entry : map.entrySet()) {
             String key = entry.getKey();
