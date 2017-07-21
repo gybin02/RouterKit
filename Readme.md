@@ -96,6 +96,12 @@ Router.setFilter(new Filter() {
     }
 });
 ```
+### 集成
+在gradle文件配置：
+```groove
+//内部版本：0.0.1-SNAPSHOT
+compile "com.meiyou.framework:router:0.0.1-SNAPSHOT"
+```
 
 ### 混淆
 ### 常见问题
