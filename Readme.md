@@ -7,10 +7,12 @@
 
 ### 特色：
 1. 支持注解方式，APT编译器自动注册Activity 和**Action**（类似Struts里面的Action）
-2. 支持注入Bundle、Uri的参数并转换格式。使用**Jet**
+2. 支持自动注入Intent,Bundle、Uri里的参数到页面使用**Jet**
 3. 支持外部浏览器打开。
 4. 支持HTTP协议。
-5. 支持多个Module。TODO
+5. 支持多个Module。
+6. 支持Uri 跳转和 Action 执行；
+7. 路由表自动初始化，也可以手动再维护；
 
 ### 功能：
 - Apt实现自动路由注册，支持多Module
@@ -87,15 +89,20 @@ startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("meiyou:///second?uid=233
 
 ### 支持前置拦截器
 
-通过前置拦截器可以对URL进行过滤，可以通过过滤器对URL进行修改，也可以拦截URL，不让路由器打开。
+通过前置拦截器可以对URL进行拦截，可以通过拦截器对URL进行修改，也可以拦截URL，不让路由器打开。
 ```java
-Router.setFilter(new Filter() {
-    public String doFilter(String url) {
-    	//return url.replace("test://www.thejoyrun.com/","test://");
-        return url;
+Router.addInterceptor(new UriInterceptor() {
+    public String beforeExecute(InterceptorData data) {
+    	//return url.replace("test://www.XXX.com/","test://");
+        return data;
     }
 });
 ```
+### 支持 设置Scheme ，只有运行的Scheme才有效；
+```java
+Router.addScheme("meiyou");
+```
+
 ### 集成
 在gradle文件配置：
 ```groove
