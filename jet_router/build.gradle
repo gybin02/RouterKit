@@ -27,12 +27,15 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile 'junit:junit:4.12'
-    compile project(':jet_annotation')
+    compile 'com.android.support:support-annotations:25.0.1'
     compile 'com.google.code.gson:gson:2.2.4'
     
     //使用compile 也会使用APT生成代码，而且是模块间依赖会传递
 //    compile project(':jet_compiler')
 
 //    annotationProcessor project(':jet_compiler')
-    compile 'com.android.support:support-annotations:25.0.1'
+
+    compile project(':jet_annotation')
+
+    apply from:rootProject.file("mvn.gradle")
 }
