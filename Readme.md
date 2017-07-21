@@ -105,7 +105,8 @@ Router.setFilter(new Filter() {
 - JUri 支持数据
 - Module传递依赖解决
 - 自定义 注解实现
--  
+-  Gradle Plugin实现
+- 
 
 ### License
 

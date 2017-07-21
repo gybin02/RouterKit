@@ -80,12 +80,30 @@ public class Router {
      * 3. APT数据保存到Asset里面，可以是JSon这样的，然后读取；
      */
     private Router() {
-
     }
 
     public void run(Uri uri) {
-        // TODO: 17/7/17  
+        try {
+            if (context == null) {
+                Log.e(TAG, "请先初始化JetRoute：init()");
+                return;
+            }
 
+            if (!checkUri(uri)) {
+                return;
+            }
+            String path = uri.getPath();
+
+            if (!routerTable.containsKey(path)) {
+                Log.e(TAG, "未找到该路由：" + path);
+                return;
+            }
+            InterceptorData data = doIntercept(uri);
+            doRun(data.mUri);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -95,29 +113,19 @@ public class Router {
      * @param uri
      */
     public void run(String uri) {
-        if (context == null) {
-            Log.e(TAG, "请先初始化JetRoute：init()");
-            return;
-        }
-
         try {
+            if (context == null) {
+                Log.e(TAG, "请先初始化JetRoute：init()");
+                return;
+            }
+
             Uri uriTemp = Uri.parse(uri);
-            if (!checkUri(uriTemp)) {
-                return;
-            }
-            String path = uriTemp.getPath();
-
-            if (!routerTable.containsKey(path)) {
-                Log.e(TAG, "未找到该路由：" + path);
-                return;
-            }
-            InterceptorData data = doIntercept(uriTemp);
-            doRun(data.mUri);
-
+            run(uriTemp);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 
     /**
      * 新增拦截器
