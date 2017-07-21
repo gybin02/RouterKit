@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 /**
  * URI实现：
- * 
+ * <p>
  * http://git.meiyou.im/Android/Route
  *
  * @author zhengxiaobin@xiaoyouzi.com
@@ -18,13 +18,13 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.SOURCE) // 代表该注解只存在源代码中，编译后的字节码中不存在
 public @interface JUri {
 
+    String value() default "";
 
-    String value();
+    /**
+     * 设置Default, 就可以不用初始化
+     *
+     * @return
+     */
+    String[] array() default {};
 
-//    /**
-//     * 类型
-//     *
-//     * @return
-//     */
-//    RouteType type() default RouteType.UI;
 }

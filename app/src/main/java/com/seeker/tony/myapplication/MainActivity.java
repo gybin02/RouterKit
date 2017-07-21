@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 route.run(uri);
                 break;
             case R.id.btn_findview_onclick:
-                uri = "meiyou:///home/action?param=1&test=true";
+                uri = "meiyou:///action?param=1&test=true";
                 route.run(uri);
                 break;
             case R.id.btn_implement:
