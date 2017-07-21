@@ -6,6 +6,7 @@ import com.meiyou.annotation.JUri;
 import com.meiyou.router.RouterConstant;
 import com.meiyou.router.model.RouterBean;
 import com.squareup.javapoet.CodeBlock;
+import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.TypeSpec;
 
@@ -41,9 +42,9 @@ import javax.tools.StandardLocation;
 @SupportedAnnotationTypes({"com.meiyou.annotation.JUri"})
 public class RouterProcessor extends AbstractProcessor {
 
-        static final String METADATA_PATH = "META-INF/spring-configuration-metadata.json";
-    public static final String ASSET_JSON="assets/router/module.json";
-//    public static final String ASSET_PATH = "assets/";
+    static final String METADATA_PATH = "META-INF/spring-configuration-metadata.json";
+    public static final String ASSET_JSON = "assets/router/module.json";
+    //    public static final String ASSET_PATH = "assets/";
 //            "router/";
     public static final String FILE_SUFFIX = ".json";
 
@@ -109,6 +110,20 @@ public class RouterProcessor extends AbstractProcessor {
      */
     private void createJava(HashMap<String, String> map) throws Exception {
 
+
+        String content = new Gson().toJson(map);
+        System.out.println(">>> content:... <<<   " + content);
+        writeFile(content);
+
+
+    }
+
+    /**
+     * 生成Java 源代码；
+     *
+     * @param map
+     */
+    private void createSource(HashMap<String, String> map) {
         CodeBlock.Builder builder = CodeBlock.builder();
         for (Map.Entry<String, String> entry : map.entrySet()) {
             String key = entry.getKey();
@@ -119,36 +134,34 @@ public class RouterProcessor extends AbstractProcessor {
         CodeBlock codeBlock = builder.build();
 
 
-//        FieldSpec field = FieldSpec.builder(HashMap.class, "map", Modifier.PUBLIC, Modifier.STATIC)
-//                                   .initializer(CodeBlock.of("new HashMap()")).build();
+        FieldSpec field = FieldSpec.builder(HashMap.class, "map", Modifier.PUBLIC, Modifier.STATIC)
+                                   .initializer(CodeBlock.of("new HashMap()")).build();
 
-        TypeSpec typeSpec = TypeSpec.classBuilder(RouterConstant.ClassName+"$$1")
+        TypeSpec typeSpec = TypeSpec.classBuilder(RouterConstant.ClassName + "$$1")
                                     .addModifiers(Modifier.PUBLIC)
                                     .addStaticBlock(codeBlock)
-//                                    .addField(field)
+                                    .addField(field)
                                     .build();
         JavaFile javaFile = JavaFile.builder(RouterConstant.PkgName, typeSpec).build();
 
 //        javaFile.writeTo(System.out);
 //        String content = javaFile.toString();
         javaFile.writeTo(filer);
-
-        String content = new Gson().toJson(map);
-        System.out.println(">>> content:... <<<   " + content);
-        writeFile(content);
-        
-
     }
-    
-    
+
 
     // TODO: 17/7/14  APT 会执行两次， WriteTO 不成功； APT  调试
 
-
+    /**
+     * 生成JSON文件保存到Assets里面
+     *
+     * @param content
+     * @throws Exception
+     */
     private void writeFile(String content) throws Exception {
         FileObject fileObject = createResource();
 //        FileObject fileObject = createSourcePath();
-        
+
         Writer writer = fileObject.openWriter();
         writer.write(content);
         writer.close();
@@ -157,18 +170,17 @@ public class RouterProcessor extends AbstractProcessor {
     }
 
 
-    
     private FileObject createResource() throws IOException {
         String string = types.toString();
         int hashCode = types.hashCode();
-        System.out.println("typename:  "+string+"   hashCode: " + hashCode);
+        System.out.println("typename:  " + string + "   hashCode: " + hashCode);
 
 //        String path = ASSET_PATH + hashCode + FILE_SUFFIX;
         String path = ASSET_JSON;
 //        String path =METADATA_PATH;
         FileObject resource = filer
                 .createResource(StandardLocation.CLASS_OUTPUT, "", path);
-                
+
 //        filer.createSourceFile("com.test");
         return resource;
     }
@@ -179,7 +191,7 @@ public class RouterProcessor extends AbstractProcessor {
 //        System.out.println("typename:  "+string+"   hashCode: " + hashCode);
 
         FileObject resource = filer
-                .createSourceFile("com.test.go."+RouterConstant.ClassName+"$$1");
+                .createSourceFile("com.test.go." + RouterConstant.ClassName + "$$1");
         return resource;
     }
 

@@ -9,9 +9,8 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.meiyou.router.action.Action;
-import com.meiyou.router.data.RouterTable;
+import com.meiyou.router.intercept.UriInterceptor;
 import com.meiyou.router.model.RouterBean;
-import com.meiyou.router.model.RouterType;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,11 +36,17 @@ import dalvik.system.DexFile;
 public class Router {
     private static final String TAG = "Router";
     private static Router instance;
+
+    private Context context;
     /**
      * 路由表
      */
-    private HashMap<String, RouterBean> uriTable = new HashMap<>();
-    private Context context;
+    private HashMap<String, RouterBean> routerTable = new HashMap<>();
+
+    /**
+     * 拦截器列表
+     */
+    private ArrayList<UriInterceptor> interceptorList = new ArrayList<>();
 
     public static Router getInstance() {
         if (instance == null) {
@@ -68,12 +73,12 @@ public class Router {
 //
 //            Object data = field.get(instance);
 //            if (data instanceof HashMap) {
-//                uriTable = (HashMap<String, RouteBean>) data;
+//                routerTable = (HashMap<String, RouteBean>) data;
 //            }
 
             registerAll();
-            uriTable = RouterTable.map;
-            Log.d(TAG, "uriTable: size = " + uriTable.size());
+//            routerTable = RouterTable.map;
+            Log.d(TAG, "routerTable: size = " + routerTable.size());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -104,7 +109,7 @@ public class Router {
             }
             String path = uriTemp.getPath();
 
-            if (!uriTable.containsKey(path)) {
+            if (!routerTable.containsKey(path)) {
                 Log.w(TAG, "未找到该路由：" + path);
                 return;
             }
@@ -116,6 +121,12 @@ public class Router {
         }
     }
 
+
+    public void addInterceptor(UriInterceptor interceptor) {
+        interceptorList.add(interceptor);
+    }
+
+/**************  private  Part ********/
     /**
      * 处理运行Uri
      *
@@ -124,11 +135,11 @@ public class Router {
      */
     private void handleRun(Uri uri) throws Exception {
         String path = uri.getPath();
-        RouterBean bean = uriTable.get(path);
-        RouterType type = bean.type;
+        RouterBean bean = routerTable.get(path);
+        int type = bean.type;
         Map<String, String> queryMap = getQuery(uri);
         //页面跳转
-        if (type == RouterType.UI) {
+        if (type == RouterBean.TYPE_UI) {
             Class clazz = Class.forName(bean.target);
             Intent intent = new Intent(context, clazz);
             fillIntent(intent, queryMap);
@@ -233,13 +244,13 @@ public class Router {
 
 
     public void registerAll() throws Exception {
-        HashMap routerMap = new HashMap();
+        HashMap<String, String> routerMap = new HashMap<>();
         AssetManager assetManager = context.getResources().getAssets();
         String[] list = assetManager.list("/router");
         for (String path : list) {
             InputStream inputStream = assetManager.open(path);
             String s = InputStream2String(inputStream);
-            Map<String, String> map = new Gson().fromJson(s, Map.class);
+            Map map = new Gson().fromJson(s, Map.class);
             routerMap.putAll(map);
 //            for (Map.Entry<String, String> entry : map.entrySet()) {
 //                String key = entry.getKey();
@@ -260,6 +271,7 @@ public class Router {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return result;
     }
 
     /**

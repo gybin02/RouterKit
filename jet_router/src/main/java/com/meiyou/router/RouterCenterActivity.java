@@ -10,7 +10,6 @@ import android.os.PersistableBundle;
  * @author zhengxiaobin@xiaoyouzi.com
  * @since 17/7/17
  */
-
 public class RouterCenterActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
