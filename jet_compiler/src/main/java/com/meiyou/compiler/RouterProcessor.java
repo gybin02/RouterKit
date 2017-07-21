@@ -10,6 +10,8 @@ import com.squareup.javapoet.TypeSpec;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -86,8 +88,15 @@ public class RouterProcessor extends AbstractProcessor {
                     TypeElement typeElement = (TypeElement) element;
 
                     String value = uri.value();
+                    String[] array = uri.array();
+                    ArrayList<String> list=new ArrayList<>();
+                    list.add(value);
+                    list.addAll(Arrays.asList(array));
                     String clazzName = typeElement.getQualifiedName().toString();
-                    map.put(value, clazzName);
+                    for (String key : list) {
+                        map.put(key, clazzName);   
+                    }
+                    
                 }
             }
             //生成Java代码
