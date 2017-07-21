@@ -1,5 +1,5 @@
 # Jet Route
-美柚路由库；Android平台页面路由框架
+美柚路由库；Android平台页面、服务路由框架
 
 基于apt技术，通过注解方式来实现URL打开Activity功能，并支持在WebView和外部浏览器使用，支持多级Activity跳转，支持Bundle、Uri参数注入并转换参数类型。
 
