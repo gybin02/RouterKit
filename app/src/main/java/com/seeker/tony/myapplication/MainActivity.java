@@ -29,6 +29,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @JFindViewOnClick(R.id.btn_log)
     Button btn_log;
+    @JFindViewOnClick(R.id.btn_init)
+    Button btn_init;
+
     String uri = "";
     Router route = Router.getInstance();
 
@@ -68,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void onClick(View view) {
         int id = view.getId();
+        route = Router.getInstance();
         switch (id) {
             case R.id.btn_findView:
                 uri = "meiyou:///home?param=\"hello\"";
@@ -78,17 +82,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 route.run(uri);
                 break;
             case R.id.btn_implement:
-                uri="meiyou:///moduleb/action";
+                uri = "meiyou:///moduleb/action";
                 route.run(uri);
                 break;
             case R.id.btn_log:
-                uri="meiyou:///moduleb";
+                uri = "meiyou:///moduleb";
                 route.run(uri);
 //                testLog(10);
 //                testAOP();
                 break;
+            case R.id.btn_init:
+                temp();
+                break;
         }
 
+    }
+
+    private void temp() {
+        try {
+            Router.getInstance().registerAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     //    @Test("")

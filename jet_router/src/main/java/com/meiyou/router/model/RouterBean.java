@@ -64,7 +64,7 @@ public class RouterBean {
      * @param target
      * @return
      */
-    private static
+    public static
     @RouterBean.RouterType
     int getType(String target) {
         int type = RouterBean.TYPE_METHOD;

@@ -65,6 +65,13 @@
             android:layout_height="wrap_content"
             android:text="moduleb"
             />
+
+        <Button
+            android:id="@+id/btn_init"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="测试初始化"
+            />
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

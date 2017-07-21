@@ -47,7 +47,7 @@ public class Router {
     /**
      * 路由表
      */
-    private HashMap<String, RouterBean> routerTable = new HashMap<>();
+    private HashMap<String, String> routerTable = new HashMap<>();
 
     /**
      * 拦截器列表
@@ -56,6 +56,7 @@ public class Router {
     private ArrayList<String> schemeList = new ArrayList<>();
 
     public static Router getInstance() {
+        // FIXME: 17/7/21  测试初始
         if (instance == null) {
             instance = new Router();
         }
@@ -107,7 +108,7 @@ public class Router {
             String path = uriTemp.getPath();
 
             if (!routerTable.containsKey(path)) {
-                Log.w(TAG, "未找到该路由：" + path);
+                Log.e(TAG, "未找到该路由：" + path);
                 return;
             }
             InterceptorData data = doIntercept(uriTemp);
@@ -149,11 +150,10 @@ public class Router {
     private InterceptorData doIntercept(Uri uriTemp) {
         InterceptorData data = new InterceptorData();
         data.mUri = uriTemp;
-        InterceptorData dataMiddle = new InterceptorData();
         for (UriInterceptor interceptor : interceptorList) {
-            dataMiddle = interceptor.beforeExecute(data);
+            data = interceptor.beforeExecute(data);
         }
-        return dataMiddle;
+        return data;
     }
 
     /**
@@ -164,19 +164,20 @@ public class Router {
      */
     private void doRun(Uri uri) throws Exception {
         String path = uri.getPath();
-        RouterBean bean = routerTable.get(path);
-        int type = bean.type;
+        String target = routerTable.get(path);
+
+        int type = RouterBean.getType(target);
         Map<String, String> queryMap = getQuery(uri);
         //页面跳转
         if (type == RouterBean.TYPE_UI) {
-            Class clazz = Class.forName(bean.target);
+            Class clazz = Class.forName(target);
             Intent intent = new Intent(context, clazz);
             fillIntent(intent, queryMap);
 
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         } else {
-            Class<?> clazz = Class.forName(bean.target);
+            Class<?> clazz = Class.forName(target);
             Action function = (Action) clazz.newInstance();
             //是否要使用Intent传递数据？
 //            Intent intent = new Intent();
@@ -235,7 +236,7 @@ public class Router {
 //    }
 
 
-    public static Map<String, String> getQuery(Uri uri) {
+    private static Map<String, String> getQuery(Uri uri) {
         Map<String, String> queryPairs = new LinkedHashMap<>();
         try {
             String query = uri.getQuery();
@@ -279,12 +280,12 @@ public class Router {
     }
 
 
-    private void registerAll() throws Exception {
-//        HashMap<String, String> routerMap = new HashMap<>();
+    public void registerAll() throws Exception {
         AssetManager assetManager = context.getResources().getAssets();
-        String[] list = assetManager.list("/router");
+        String root = "router";
+        String[] list = assetManager.list(root);
         for (String path : list) {
-            InputStream inputStream = assetManager.open(path);
+            InputStream inputStream = assetManager.open(root + "/" + path);
             String s = InputStream2String(inputStream);
             Map map = new Gson().fromJson(s, Map.class);
             routerTable.putAll(map);
