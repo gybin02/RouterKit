@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.meiyou.router.action.Action;
+import com.meiyou.router.intercept.InterceptorData;
 import com.meiyou.router.intercept.UriInterceptor;
 import com.meiyou.router.model.RouterBean;
 
@@ -17,6 +18,7 @@ import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -47,6 +49,7 @@ public class Router {
      * 拦截器列表
      */
     private ArrayList<UriInterceptor> interceptorList = new ArrayList<>();
+    private ArrayList<String> schemeList = new ArrayList<>();
 
     public static Router getInstance() {
         if (instance == null) {
@@ -67,15 +70,6 @@ public class Router {
      */
     private Router() {
         try {
-//            Class<?> table = Class.forName(RouterConstant.PkgName + "." + RouterConstant.ClassName);
-//            Field field = table.getDeclaredField("map");
-//            Object instance = table.newInstance();
-//
-//            Object data = field.get(instance);
-//            if (data instanceof HashMap) {
-//                routerTable = (HashMap<String, RouteBean>) data;
-//            }
-
             registerAll();
 //            routerTable = RouterTable.map;
             Log.d(TAG, "routerTable: size = " + routerTable.size());
@@ -96,9 +90,8 @@ public class Router {
      * @param uri
      */
     public void run(String uri) {
-
         if (context == null) {
-            Log.e(TAG, "请先初始化JetRoute：");
+            Log.e(TAG, "请先初始化JetRoute：init()");
             return;
         }
 
@@ -113,27 +106,59 @@ public class Router {
                 Log.w(TAG, "未找到该路由：" + path);
                 return;
             }
-
-            handleRun(uriTemp);
+            InterceptorData data = doIntercept(uriTemp);
+            doRun(data.mUri);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-
+    /**
+     * 新增拦截器
+     *
+     * @param interceptor
+     */
     public void addInterceptor(UriInterceptor interceptor) {
         interceptorList.add(interceptor);
     }
 
+    /**
+     * 新增支持的Scheme；支持多Scheme
+     * 不设置：全部允许；推荐设置;
+     * eg: "meiyou"
+     *
+     * @param scheme
+     */
+    public void addScheme(String... scheme) {
+        schemeList.addAll(Arrays.asList(scheme));
+    }
+
 /**************  private  Part ********/
+
+    /**
+     * 前置拦截
+     *
+     * @param uriTemp
+     * @return
+     */
+    private InterceptorData doIntercept(Uri uriTemp) {
+        InterceptorData data = new InterceptorData();
+        data.mUri = uriTemp;
+        InterceptorData dataMiddle = new InterceptorData();
+        for (UriInterceptor interceptor : interceptorList) {
+            dataMiddle = interceptor.beforeExecute(data);
+        }
+        return dataMiddle;
+    }
+
     /**
      * 处理运行Uri
      *
      * @param uri
      * @throws Exception
      */
-    private void handleRun(Uri uri) throws Exception {
+    private void doRun(Uri uri) throws Exception {
         String path = uri.getPath();
         RouterBean bean = routerTable.get(path);
         int type = bean.type;
@@ -168,6 +193,7 @@ public class Router {
      * 那么它的各个属性的值就为：
      * Authority是:developer.android.com
      * Host是:developer.android.com
+     * Scheme是：HTTP
      * Port是：-1
      * File是/referencejava/net/ URL.html?s=a
      * Path是/referencejava/net/URL.html
@@ -177,26 +203,32 @@ public class Router {
      * @return true，有效，
      */
     private boolean checkUri(Uri uri) {
-        return true;
+        String scheme = uri.getScheme();
+        if (schemeList.size() == 0) {
+            return true;
+        } else {
+            if (schemeList.contains(scheme)) {
+                return true;
+            }
+        }
+        return false;
 
     }
 
-    /**
-     * 获取URI path
-     *
-     * @param uri
-     * @return
-     */
-    private String getUriPath(String uri) {
-        // TODO: 17/7/13  
-        return uri;
-    }
+//    /**
+//     * 获取URI path
+//     *
+//     * @param uri
+//     * @return
+//     */
+//    private String getUriPath(String uri) {
+//        return uri;
+//    }
 
-    public Map getQuery(String uri) {
-        // TODO: 17/7/13 使用Uri 解析HTTP的方法解析参数
-        Map<String, String> query = new LinkedHashMap<>();
-        return query;
-    }
+//    public Map getQuery(String uri) {
+//        Map<String, String> query = new LinkedHashMap<>();
+//        return query;
+//    }
 
 
     public static Map<String, String> getQuery(Uri uri) {
@@ -243,15 +275,15 @@ public class Router {
     }
 
 
-    public void registerAll() throws Exception {
-        HashMap<String, String> routerMap = new HashMap<>();
+    private void registerAll() throws Exception {
+//        HashMap<String, String> routerMap = new HashMap<>();
         AssetManager assetManager = context.getResources().getAssets();
         String[] list = assetManager.list("/router");
         for (String path : list) {
             InputStream inputStream = assetManager.open(path);
             String s = InputStream2String(inputStream);
             Map map = new Gson().fromJson(s, Map.class);
-            routerMap.putAll(map);
+            routerTable.putAll(map);
 //            for (Map.Entry<String, String> entry : map.entrySet()) {
 //                String key = entry.getKey();
 //                String value = entry.getValue();
@@ -275,10 +307,26 @@ public class Router {
     }
 
     /**
+     * 反射读取map 数据；
+     */
+//    @Deprecated
+//    private void register() {
+    //            Class<?> table = Class.forName(RouterConstant.PkgName + "." + RouterConstant.ClassName);
+//            Field field = table.getDeclaredField("map");
+//            Object instance = table.newInstance();
+//
+//            Object data = field.get(instance);
+//            if (data instanceof HashMap) {
+//                routerTable = (HashMap<String, RouteBean>) data;
+//            }
+//    }
+
+    /**
      * 使用反射读取,路由表
      *
      * @throws Exception
      */
+    @Deprecated
     private void register() throws Exception {
         String[] classes = getClassesFromPackage(context, RouterConstant.PkgName);
         for (String clazzName : classes) {
@@ -295,6 +343,7 @@ public class Router {
      * @param packageName
      * @return
      */
+    @Deprecated
     private static String[] getClassesFromPackage(Context context, String packageName) {
         ArrayList<String> classes = new ArrayList<String>();
         try {

@@ -1,5 +1,7 @@
 package com.meiyou.router.intercept;
 
+import android.net.Uri;
+
 import java.util.HashMap;
 
 /**
@@ -13,7 +15,7 @@ public class InterceptorData {
     /**
      * 执行的URI
      */
-    public String mUri;
+    public Uri mUri;
     /**
      * 可以带额外的信息
      */
