@@ -30,15 +30,16 @@ dependencies {
     compile project(':jet_router')
 //    annotationProcessor project(':jet_compiler')
 
-//    compile project(':module_b')
+    compile project(':module_b')
     compile 'com.android.support:appcompat-v7:25.0.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
     compile 'com.android.support:design:25.0.1'
     testCompile 'junit:junit:4.12'
     compile 'com.meiyou.framework:jet:1.0.0'
 
+    //测试使用 编译器编译；
 //    annotationProcessor project(':jet_compiler')
-    compile project(':jet_compiler')
+//    compile project(':jet_compiler')
 
 }
 

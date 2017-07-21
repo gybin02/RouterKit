@@ -27,9 +27,13 @@ import java.util.Map;
 import dalvik.system.DexFile;
 
 /**
- * 实现Route功能，
- * 代码抽取出一个新包
- * 需要调用 init初始化
+ * 实现路由功能 <br>
+ * 需要调用 init初始化；<br>
+ * run(String uri),执行路由<br>
+ * 可以新增拦截器；<br>
+ * 可以新增Scheme判断，是否有效URI；<br>
+ * <p>
+ * 路由表，要不要加密？
  *
  * @author zhengxiaobin@xiaoyouzi.com
  * @since 17/7/13
