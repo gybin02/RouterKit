@@ -7,7 +7,7 @@
 
 ### 特色：
 1. 支持注解方式，APT编译器自动注册Activity 和**Action**（类似Struts里面的Action）
-2. 支持自动注入Intent,Bundle、Uri里的参数到页面使用**Jet**
+2. 支持自动注入Intent,Bundle、Uri里的参数到页面使用[**jet**](git.meiyou.im/Android/jet)
 3. 支持外部浏览器打开。
 4. 支持HTTP协议。
 5. 支持多个Module。
