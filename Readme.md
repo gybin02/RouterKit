@@ -111,7 +111,7 @@ Router.addInterceptor(new UriInterceptor() {
     }
 });
 ```
-### 支持 设置Scheme ，只有运行的Scheme才有效；
+### 支持 设置Scheme ，只有允许的Scheme才有效；才允许路由分发
 ```java
 Router.addScheme("meiyou");
 ```
