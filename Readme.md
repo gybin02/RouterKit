@@ -1,4 +1,4 @@
-# Jet Route
+# Jet RouterKit
 美柚路由库；Android平台对页面、服务的路由框架。自动化且易用。
 
 基于apt技术，通过注解方式来实现URL打开Activity功能，并支持在WebView和外部浏览器使用，支持多级Activity跳转，支持Bundle、Uri参数注入并转换参数类型。
@@ -18,6 +18,7 @@
 - Apt实现自动路由注册，支持多Module
 - 路由表维护
 - Activity转发 和 Action转发（支持URI页面跳转和方法调用）
+
 ### 原理图
 ![原理图](http://upload-images.jianshu.io/upload_images/53953-ce3ffb119e0d6534.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
