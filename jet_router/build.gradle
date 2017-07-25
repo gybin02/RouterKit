@@ -49,7 +49,7 @@ dependencies {
 //    compile project(':jet_compiler')
 
     if (doPackage == "True") {
-        compile project(':jet_compiler')
+//        compile project(':jet_compiler')
     } else {
         compile "com.meiyou.framework:router-compiler:${DEPEND_VERSION}"
     }
