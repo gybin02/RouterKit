@@ -3,7 +3,7 @@
 
 基于apt技术，通过注解方式来实现URL打开Activity功能，并支持在WebView和外部浏览器使用，支持多级Activity跳转，支持Bundle、Uri参数注入并转换参数类型。
 
-类似 ARoute 功能；
+类似 [ARoute](https://github.com/alibaba/ARouter) 功能；
 
 ### 特色：
 1. 支持注解方式，APT编译器自动注册Activity 和**Action**（类似Struts里面的Action）
