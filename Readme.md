@@ -1,11 +1,26 @@
 # Jet RouterKit
 美柚路由库；Android平台对页面、服务的路由框架。自动化且易用。
 
-基于apt技术（注解-编译时生成代码，不反射，无性能损耗），通过注解方式来实现URL打开Activity功能，并支持在WebView和外部浏览器使用，支持多级Activity跳转，支持Bundle、Uri参数注入并转换参数类型。
+基于**APT**技术（注解-编译时生成代码，不反射，无性能损耗），通过注解方式来实现**URL**打开Activity功能，并支持在WebView和外部浏览器使用，支持多级Activity跳转，支持Bundle、Uri参数注入并转换参数类型。
 
-类似 [ARoute](https://github.com/alibaba/ARouter) 功能；
+类似 阿里开源的[**ARoute**](https://github.com/alibaba/ARouter) 功能；移除分组概念，会更通用。
 
-APT： 
+
+### 方案对
+|方案对比|RouterKit|Airbnb 的DeepLinkDispatch|阿里     ARouter|天猫 统跳协议|ActivityRouter|
+|:------:|:--------:| :----------------------:| :-------------:| :----------:|-------------:|
+|路由注册	|注解式接口注册	|每个module都要手动注册	|每个module的路由表都要类查找	|AndroidManiFest配置	|每个module都要手动注册|
+|路由查找	|路由表|	路由表	|路由表	|系统Intent|	路由表
+|路由分发	|Activity转发|	Activity转发|	Activity转发|	Activity转发	|Activity转发|
+|动态替换	|主线程|	不支持	|线程等待	|不支持|	不支持|
+|动态拦截	|主线程|	不支持|	线程等待	|不支持	|主线程|
+|安全拦截	|主线程|	不支持	|线程等待	|不支持	|主线程|
+|方法调用	|手动拼装	|手动拼装	|手动拼装	|手动拼装	|手动拼装|
+|参数获取	|JET 依赖自动注入，支持所有类型|	参数定义在path，不利于多人协作|	Apt依赖注入，但是要手动调用get方法|	手动调用	|手动调用|
+|结果返回	|onActivityResult|	onActivityResult	|onActivityResult	|onActivityResult	|onActivityResult|
+|支持多Module	|支持	|不支持	|支持	|不支持|	支持|
+
+
 
 ### 特色：
 1. 支持注解方式，APT编译器自动注册Activity 和**Action**（类似Struts里面的Action）
@@ -128,6 +143,7 @@ compile "com.meiyou.framework:router:0.0.1-SNAPSHOT"
 
 ### 混淆
 ### 常见问题
+* [Intent参数自动注入IOC - Jet](git.meiyou.im/Android/jet)
 * 参考[Android 组件化 —— 路由设计最佳实践](http://www.jianshu.com/p/8a3eeeaf01e8)
 * [开源最佳实践：Android平台页面路由框架ARouter](https://yq.aliyun.com/articles/71687?spm=5176.100240.searchblog.7.8os9Go)
 * [iOS 组件化 —— 路由设计思路分析](https://halfrost.com/ios_route)
