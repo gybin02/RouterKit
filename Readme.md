@@ -6,10 +6,10 @@
 类似 阿里开源的[**ARoute**](https://github.com/alibaba/ARouter) 功能；移除分组概念，会更通用。
 
 
-### 方案对
-|方案对比|RouterKit|Airbnb 的DeepLinkDispatch|阿里     ARouter|天猫 统跳协议|ActivityRouter|
+### 方案对比
+|实现功能|**RouterKit**|Airbnb 的**DeepLinkDispatch**|阿里     **ARouter**|天猫 统跳协议|**ActivityRouter**Github上Star最多 |
 |:------:|:--------:| :----------------------:| :-------------:| :----------:|-------------:|
-|路由注册	|注解式接口注册	|每个module都要手动注册	|每个module的路由表都要类查找	|AndroidManiFest配置	|每个module都要手动注册|
+|路由注册	|注解式APT自动注册	|每个module都要手动注册	|每个module的路由表都要APT类查找	|AndroidManiFest配置	|每个module都要手动注册|
 |路由查找	|路由表|	路由表	|路由表	|系统Intent|	路由表
 |路由分发	|Activity转发|	Activity转发|	Activity转发|	Activity转发	|Activity转发|
 |动态替换	|主线程|	不支持	|线程等待	|不支持|	不支持|
