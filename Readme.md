@@ -96,7 +96,7 @@ public class TestAction extends Action {
 // Java代码调用
 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("meiyou:///second?uid=233&name=Wiki")));
 
-// HTML方式，系统浏览器（不支持微信?）
+// HTML方式，系统浏览器（不支持微信，微信内部开网页会禁止所有的Scheme）
 <a href="test:///second?uid=233&name=Wiki">打开JoyrunApp的SecondActivity</a>
 
 ```
