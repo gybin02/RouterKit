@@ -110,7 +110,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
-        testUrl();
+//        testUrl();
+        createUri();
     }
 
     //    @Test("")
@@ -120,10 +121,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        URI uri = new URI("");
 //        Uri.parse()
 //        HelloChina helloChina = new HelloChina();
+
     }
 
     public void testUrl() {
         HashMap<String, Object> sampleMap = Mock.getSampleMap();
+//        LinkedHashMap<String,Object> linkedHashMap=new LinkedHashMap<>(sampleMap);
         Uri uri = Uri.parse("meiyou:///home");
         Uri.Builder builder = uri.buildUpon();
         for (Map.Entry<String, Object> entry : sampleMap.entrySet()) {
@@ -131,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Object value = entry.getValue();
             builder.appendQueryParameter(key, value.toString());
         }
-        builder.build();
+        uri = builder.build();
         String s = uri.toString();
         Log.e(TAG, "testUrl: " + s);
 

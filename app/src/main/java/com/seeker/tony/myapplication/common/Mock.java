@@ -39,17 +39,18 @@ public class Mock {
     }
 
     /**
-     * 测试数据 Map
+     * 测试数据 Map,含有嵌套
      *
      * @return
      */
-    public static HashMap<String,Object> getSampleMap() {
-        HashMap map = new HashMap();
+    public static HashMap<String, Object> getSampleMap() {
+        HashMap<String,Object> map = new HashMap<>();
         map.put("event", "event11");
-        map.put("event2", "event2");
-        HashMap paramMap = new HashMap();
-        paramMap.put("param1", "param1");
-        paramMap.put("param2", "param2");
+        map.put("event2", false);
+        map.put("event3", 89);
+        HashMap<String,Object> paramMap = new HashMap<>();
+        paramMap.put("param1", "value1");
+        paramMap.put("param2", 3);
         map.put("attribute", paramMap);
         return map;
 
