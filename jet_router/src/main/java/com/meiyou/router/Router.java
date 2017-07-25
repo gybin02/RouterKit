@@ -109,6 +109,7 @@ public class Router {
 
     /**
      * Main Method, 要不要改成静态的？
+     * eg: "meiyou:///home/action"
      *
      * @param uri
      */
@@ -124,6 +125,25 @@ public class Router {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 跳转
+     *
+     * @param uri    具体的URI： "meiyou:///home"
+     * @param param: Object支持基础数据类型，如果是对象，推荐转成String;
+     */
+    public void run(String uri, HashMap<String, Object> param) {
+        Uri uriTemp = Uri.parse(uri);
+        Uri.Builder builder = uriTemp.buildUpon();
+        for (Map.Entry<String, Object> entry : param.entrySet()) {
+            String key = entry.getKey();
+            Object value = entry.getValue();
+            builder.appendQueryParameter(key, value.toString());
+        }
+        Uri uriNew = builder.build();
+        run(uriNew);
+
     }
 
 
