@@ -1,8 +1,10 @@
 package com.seeker.tony.myapplication;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +13,10 @@ import android.widget.Button;
 import com.meiyou.jet.annotation.JFindViewOnClick;
 import com.meiyou.jet.process.Jet;
 import com.meiyou.router.Router;
+import com.seeker.tony.myapplication.common.Mock;
+
+import java.util.HashMap;
+import java.util.Map;
 
 //@JUri("")
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -99,11 +105,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void temp() {
-        try {
-            Router.getInstance().registerAll();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Router.getInstance().registerAll();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        testUrl();
     }
 
     //    @Test("")
@@ -115,4 +122,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        HelloChina helloChina = new HelloChina();
     }
 
+    public void testUrl() {
+        HashMap<String, Object> sampleMap = Mock.getSampleMap();
+        Uri uri = Uri.parse("meiyou:///home");
+        Uri.Builder builder = uri.buildUpon();
+        for (Map.Entry<String, Object> entry : sampleMap.entrySet()) {
+            String key = entry.getKey();
+            Object value = entry.getValue();
+            builder.appendQueryParameter(key, value.toString());
+        }
+        builder.build();
+        String s = uri.toString();
+        Log.e(TAG, "testUrl: " + s);
+
+    }
+
+    public void createUri() {
+        final Uri.Builder builder = new Uri.Builder();
+        builder.scheme("meiyou");
+        builder.authority("lingan.com");
+        builder.path("/virtualpath/settings.xml");
+        builder.appendQueryParameter("key", "value");
+        builder.appendQueryParameter("data", "" + 1);
+        builder.appendQueryParameter("chinese", "hell dodod");
+        builder.appendQueryParameter("chinese2", "中文");
+
+        Uri uri = builder.build();
+        String s = uri.toString();
+        Log.e(TAG, "testUrl: " + s);
+
+//        URL url = new URL(uri.toString());
+    }
 }
