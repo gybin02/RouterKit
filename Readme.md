@@ -127,13 +127,14 @@ compile "com.meiyou.framework:router:0.0.1-SNAPSHOT"
 ### 常见问题
 * 参考[Android 组件化 —— 路由设计最佳实践](http://www.jianshu.com/p/8a3eeeaf01e8)
 * [开源最佳实践：Android平台页面路由框架ARouter](https://yq.aliyun.com/articles/71687?spm=5176.100240.searchblog.7.8os9Go)
+
 ### TODO
-- JUri 支持数据
-- Module传递依赖解决
+- JUri 支持数组数据（fixed）
+- Module传递依赖解决 (fixed)
 - 自定义 注解实现
 -  Gradle Plugin实现
 - 拦截器排序
-- 路由匹配规则Matcher功能
+- 路由匹配规则Matcher功能升级
 - 
 
 ### License
