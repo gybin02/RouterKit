@@ -3,7 +3,6 @@
 
 基于**APT**技术（注解-编译时生成代码，不反射，无性能损耗），通过注解方式来实现**URL**打开Activity功能，并支持在WebView和外部浏览器使用，支持多级Activity跳转，支持Bundle、Uri参数注入并转换参数类型。
 
-类似 阿里开源的[**ARoute**](https://github.com/alibaba/ARouter) 功能；移除分组概念，会更通用。
 
 
 ### 方案对比
@@ -21,6 +20,7 @@
 |支持多Module	|支持	|不支持	|支持	|不支持|	支持|
 
 
+整体类似 阿里开源的[**ARoute**](https://github.com/alibaba/ARouter) 功能；移除分组概念，强化多Module编译和自动注册路由表，会更通用。
 
 ### 特色：
 1. 支持注解方式，APT编译器自动注册Activity 和**Action**（类似Struts里面的Action）
