@@ -1,9 +1,11 @@
 # Jet RouterKit
 美柚路由库；Android平台对页面、服务的路由框架。自动化且易用。
 
-基于apt技术，通过注解方式来实现URL打开Activity功能，并支持在WebView和外部浏览器使用，支持多级Activity跳转，支持Bundle、Uri参数注入并转换参数类型。
+基于apt技术（注解-编译时生成代码，不反射，无性能损耗），通过注解方式来实现URL打开Activity功能，并支持在WebView和外部浏览器使用，支持多级Activity跳转，支持Bundle、Uri参数注入并转换参数类型。
 
 类似 [ARoute](https://github.com/alibaba/ARouter) 功能；
+
+APT： 
 
 ### 特色：
 1. 支持注解方式，APT编译器自动注册Activity 和**Action**（类似Struts里面的Action）
@@ -130,6 +132,7 @@ compile "com.meiyou.framework:router:0.0.1-SNAPSHOT"
 * [开源最佳实践：Android平台页面路由框架ARouter](https://yq.aliyun.com/articles/71687?spm=5176.100240.searchblog.7.8os9Go)
 * [iOS 组件化 —— 路由设计思路分析](https://halfrost.com/ios_route)
 * [LiteRouter模仿retrofit，各个业务分根据需求约定好接口，就像一份接口文档一样](http://www.jianshu.com/p/79e9a54e85b2)
+* [routable-android 模式匹配方式的路由](https://github.com/clayallsopp/routable-android)
 
 ### TODO
 - JUri 支持数组数据（fixed）
