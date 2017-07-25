@@ -134,12 +134,12 @@ compile "com.meiyou.framework:router:0.0.1-SNAPSHOT"
 ### TODO
 - JUri 支持数组数据（fixed）
 - Module传递依赖解决 (fixed)
-- 自定义 注解实现
--  Gradle Plugin实现
+- 自定义 注解实现，可以再自定义额外的路由表，实现自定义的注解的路由，Door接口的优化
+-  Gradle Plugin实现，APT 主工程 需要配置编译过程问题
 - 拦截器排序,优先级 priority
-- 路由匹配规则Matcher功能升级
+- 路由匹配规则Matcher功能升级, Pattern 模式匹配
 - 调用方式接口化，like: retrofit;
-- 路由结果回调？ isNeed
+- 路由结果回调？ isNeed？
 
 ### License
 
