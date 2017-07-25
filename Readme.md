@@ -128,7 +128,8 @@ compile "com.meiyou.framework:router:0.0.1-SNAPSHOT"
 ### 常见问题
 * 参考[Android 组件化 —— 路由设计最佳实践](http://www.jianshu.com/p/8a3eeeaf01e8)
 * [开源最佳实践：Android平台页面路由框架ARouter](https://yq.aliyun.com/articles/71687?spm=5176.100240.searchblog.7.8os9Go)
-
+* [iOS 组件化 —— 路由设计思路分析](https://halfrost.com/ios_route)
+* [LiteRouter]模仿retrofit，各个业务分根据需求约定好接口，就像一份接口文档一样 
 ### TODO
 - JUri 支持数组数据（fixed）
 - Module传递依赖解决 (fixed)
@@ -136,7 +137,8 @@ compile "com.meiyou.framework:router:0.0.1-SNAPSHOT"
 -  Gradle Plugin实现
 - 拦截器排序
 - 路由匹配规则Matcher功能升级
-- 
+- 调用方式接口化，like: retrofit;
+- 路由结果回调？ isNeed
 
 ### License
 
