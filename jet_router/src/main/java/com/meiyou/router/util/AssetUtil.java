@@ -7,7 +7,7 @@ import java.io.InputStream;
 
 /**
  * Asset 帮助类
- * @author zhengxiaobin <gybin02@Gmail.com>
+ * @author zhengxiaobin
  * @since 2016/3/31
  */
 public class AssetUtil {
