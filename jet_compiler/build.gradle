@@ -1,4 +1,5 @@
 apply plugin: 'java'
+apply plugin: 'com.novoda.bintray-release'
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -12,3 +13,12 @@ sourceCompatibility = "1.7"
 targetCompatibility = "1.7"
 
 apply from:rootProject.file("mvn_java.gradle")
+
+publish {
+    userOrg = 'gybin02'      //bintray注册的用户名
+    groupId = 'com.meiyou.framework'         //compile引用时的第1部分groupId
+    artifactId = 'router-compiler'     //compile引用时的第2部分项目名
+    publishVersion = '1.0.0'    //compile引用时的第3部分版本号
+    desc = '美柚路由库；Android平台对页面、服务的路由框架。自动化且易用'
+    website = 'https://github.com/gybin02/RouterKit'
+}
