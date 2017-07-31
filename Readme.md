@@ -1,7 +1,7 @@
 # Jet RouterKit
 ~~美柚路由库~~；Android平台对页面、服务的路由框架。自动化且易用。
 
-- 基于**APT**技术（注解-编译时生成代码，不反射，无性能损耗），通过注解方式来实现**URL**打开Activity功能。
+- 基于**APT**技术（注解-编译时生成代码，不反射，无性能损耗），通过注解方式来实现**URL**打开Activity功能或 执行特定动作
 - 并支持在WebView和外部浏览器使用，支持多级Activity跳转，
 - 使用[**Jet**](http://git.meiyou.im/Android/jet)技术支持Bundle、Intent，Uri参数自动注入页面并转换参数类型。
 
