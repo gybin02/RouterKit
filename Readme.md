@@ -1,6 +1,6 @@
 # Jet RouterKit
 ~~路由库~~；Android平台对页面、服务的路由框架。自动化且易用。
-
+![原理图](http://upload-images.jianshu.io/upload_images/1194012-012b64699f6d1222.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 - 基于**APT**技术（注解-编译时生成代码，不反射，无性能损耗），通过注解方式来实现**URL**打开Activity功能或 执行特定动作
 - 并支持在WebView和外部浏览器使用，支持路由表维护，降级访问等；
 - 使用[**Jet**](http://git.meiyou.im/Android/jet)技术支持Bundle、Intent，Uri参数自动注入页面并转换参数类型。
@@ -147,7 +147,8 @@ compile "com.meiyou.framework:router:0.0.1-SNAPSHOT"
 * [Intent参数自动注入IOC - Jet](http://git.meiyou.im/Android/jet)
 * 参考[Android 组件化 —— 路由设计最佳实践](http://www.jianshu.com/p/8a3eeeaf01e8)
 * [开源最佳实践：Android平台页面路由框架ARouter](https://yq.aliyun.com/articles/71687?spm=5176.100240.searchblog.7.8os9Go)
-* [iOS 组件化 —— 路由设计思路分析](https://halfrost.com/ios_route)
+* [iOS 组件化 —— 路由设计思路分析](http://www.jianshu.com/p/76da56b3bd55)
+* [前端组件化]Vue.js And React 组件化(https://halfrost.com/vue_ios_modularization/)
 * [LiteRouter模仿retrofit，各个业务分根据需求约定好接口，就像一份接口文档一样](http://www.jianshu.com/p/79e9a54e85b2)
 * [routable-android 模式匹配方式的路由](https://github.com/clayallsopp/routable-android)
 
