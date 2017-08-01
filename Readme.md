@@ -1,4 +1,8 @@
 # Jet RouterKit
+
+ [ ![Download](https://api.bintray.com/packages/gybin02/maven/router/images/download.svg) ](https://bintray.com/gybin02/maven/router/_latestVersion)
+
+
 ~~路由库~~；Android平台对页面、服务的路由框架。自动化且易用。
 ![原理图](http://upload-images.jianshu.io/upload_images/1194012-012b64699f6d1222.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 - 基于**APT**技术（注解-编译时生成代码，不反射，无性能损耗），通过注解方式来实现**URL**打开Activity功能或 执行特定动作
@@ -139,7 +143,7 @@ Router.addScheme("meiyou");
 在gradle文件配置：
 ```groove
 //内部版本：0.0.1-SNAPSHOT
-compile "com.meiyou.framework:router:0.0.1-SNAPSHOT"
+compile "com.meiyou.framework:router:1.0.0"
 ```
 
 ### 混淆
