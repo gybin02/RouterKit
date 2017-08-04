@@ -170,6 +170,9 @@ compile "com.meiyou.framework:router:1.0.0"
 - 调用方式接口化，like: retrofit;
 - 路由结果回调？ isNeed？
 - Kotlin版本实现
+- 路由表初始化异步线程化
+- 安全性
+- like Express, 拦截器，中间件化？ 
 
 
 ### 交流群：
