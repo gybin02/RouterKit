@@ -10,7 +10,7 @@
 ![原理图](http://upload-images.jianshu.io/upload_images/1194012-012b64699f6d1222.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 - 基于**APT**技术（注解-编译时生成代码，不反射，无性能损耗），通过注解方式来实现**URL**打开Activity功能或 执行特定动作
 - 并支持在WebView和外部浏览器使用，支持路由表维护，降级访问等；
-- 使用[**Jet**](http://git.meiyou.im/Android/jet)技术支持Bundle、Intent，Uri参数自动注入页面并转换参数类型。
+- 使用[**Jet**](https://github.com/gybin02/Jet)技术支持Bundle、Intent，Uri参数自动注入页面并转换参数类型。
 - [English Version](/Readme_en.md)
 
 ### 方案对比
