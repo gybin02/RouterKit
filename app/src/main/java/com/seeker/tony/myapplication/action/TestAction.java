@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * 测试URI 使用Action
  *
- * @author zhengxiaobin@xiaoyouzi.com
+ * @author zhengxiaobin
  * @since 17/7/13
  */
 

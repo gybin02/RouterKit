@@ -34,7 +34,7 @@ import javax.tools.StandardLocation;
 /**
  * 直接Build，由于Gradle的配置，代码不变，APT可能不执行，要执行clean + build;
  *
- * @author zhengxiaobin@xiaoyouzi.com
+ * @author zhengxiaobin
  * @since 17/7/13
  */
 @AutoService(Processor.class)

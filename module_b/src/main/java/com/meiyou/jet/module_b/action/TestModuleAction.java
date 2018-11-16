@@ -8,7 +8,7 @@ import com.meiyou.router.action.Action;
 import java.util.Map;
 
 /**
- * @author zhengxiaobin@xiaoyouzi.com
+ * @author zhengxiaobin
  * @since 17/7/17
  */
 

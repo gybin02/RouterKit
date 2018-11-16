@@ -19,7 +19,7 @@ import com.meiyou.router.Router;
 /**
  * BLank Fragment
  *
- * @author zhengxiaobin@xiaoyouzi.com
+ * @author zhengxiaobin
  * @since 17/5/25 上午9:45
  */
 public class BlankFragment extends Fragment implements View.OnClickListener {

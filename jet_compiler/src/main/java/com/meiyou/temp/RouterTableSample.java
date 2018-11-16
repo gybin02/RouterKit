@@ -3,7 +3,7 @@ package com.meiyou.temp;
 /**
  * 生成的Java文件
  *
- * @author zhengxiaobin@xiaoyouzi.com
+ * @author zhengxiaobin
  * @since 17/7/13
  */
 //@Deprecated

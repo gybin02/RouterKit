@@ -9,7 +9,7 @@ import java.util.Random;
 /**
  * Mock 数据类；
  *
- * @author zhengxiaobin@xiaoyouzi.com
+ * @author zhengxiaobin
  * @since 17/6/9
  */
 

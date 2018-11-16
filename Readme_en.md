@@ -8,6 +8,7 @@
 
 ## Getting started
 
+
 //edit module build.gradle file:
 ```groove
 //内部版本：0.0.1-SNAPSHOT
@@ -113,7 +114,7 @@ QQ群：547612870
  
 ### License
 
-Copyright 2017 zhengxiaobin@xiaoyouzi.com; 
+Copyright 2017 zhengxiaobin; 
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

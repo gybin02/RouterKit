@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * Uri对应的执行基类方法
  *
- * @author zhengxiaobin@xiaoyouzi.com
+ * @author zhengxiaobin
  * @since 17/7/13
  */
 
