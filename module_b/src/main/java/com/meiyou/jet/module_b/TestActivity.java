@@ -1,9 +1,9 @@
-package com.meiyou.jet.module_b;
+package com.jet.jet.module_b;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.meiyou.annotation.JUri;
+import com.jet.annotation.JUri;
 
 @JUri("/moduleb")
 public class TestActivity extends AppCompatActivity {

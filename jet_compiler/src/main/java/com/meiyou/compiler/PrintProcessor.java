@@ -1,7 +1,7 @@
-package com.meiyou.compiler;
+package com.jet.compiler;
 
 import com.google.auto.service.AutoService;
-import com.meiyou.annotation.Print;
+import com.jet.annotation.Print;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -20,7 +20,7 @@ import javax.tools.Diagnostic;
 @Deprecated
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
 @AutoService(Processor.class)
-@SupportedAnnotationTypes("com.meiyou.annotation.Print")
+@SupportedAnnotationTypes("com.jet.annotation.Print")
 public class PrintProcessor extends AbstractProcessor {
 
     private Messager mMessager;

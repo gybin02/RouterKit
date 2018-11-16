@@ -1,6 +1,6 @@
-package com.meiyou.router.data;
+package com.jet.router.data;
 
-import com.meiyou.router.model.RouterBean;
+import com.jet.router.model.RouterBean;
 
 import java.util.HashMap;
 

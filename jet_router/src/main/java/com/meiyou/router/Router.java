@@ -1,4 +1,4 @@
-package com.meiyou.router;
+package com.jet.router;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,11 +8,11 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.meiyou.router.action.Action;
-import com.meiyou.router.intercept.InterceptorData;
-import com.meiyou.router.intercept.UriInterceptor;
-import com.meiyou.router.meiyou.UriMeiyou;
-import com.meiyou.router.model.RouterBean;
+import com.jet.router.action.Action;
+import com.jet.router.intercept.InterceptorData;
+import com.jet.router.intercept.UriInterceptor;
+import com.jet.router.meiyou.UriMeiyou;
+import com.jet.router.model.RouterBean;
 
 import java.io.IOException;
 import java.io.InputStream;

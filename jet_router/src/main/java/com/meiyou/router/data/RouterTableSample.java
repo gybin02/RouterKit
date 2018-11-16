@@ -1,4 +1,4 @@
-package com.meiyou.router.data;
+package com.jet.router.data;
 
 /**
  * 生成的代码

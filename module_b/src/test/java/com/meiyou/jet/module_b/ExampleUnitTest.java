@@ -1,4 +1,4 @@
-package com.meiyou.jet.module_b;
+package com.jet.jet.module_b;
 
 import org.junit.Test;
 

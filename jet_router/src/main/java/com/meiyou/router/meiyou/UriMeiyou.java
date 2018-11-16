@@ -1,4 +1,4 @@
-package com.meiyou.router.meiyou;
+package com.jet.router.meiyou;
 
 import android.support.annotation.NonNull;
 

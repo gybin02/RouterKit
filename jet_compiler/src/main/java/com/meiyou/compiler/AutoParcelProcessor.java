@@ -1,7 +1,7 @@
-package com.meiyou.compiler;
+package com.jet.compiler;
 
 import com.google.auto.service.AutoService;
-import com.meiyou.annotation.AutoParcel;
+import com.jet.annotation.AutoParcel;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -21,7 +21,7 @@ import javax.tools.JavaFileObject;
 @Deprecated
 @AutoService(Processor.class)
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
-@SupportedAnnotationTypes("com.meiyou.annotation.AutoParcel")
+@SupportedAnnotationTypes("com.jet.annotation.AutoParcel")
 public final class AutoParcelProcessor extends AbstractProcessor {
 
     @Override

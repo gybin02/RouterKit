@@ -1,4 +1,4 @@
-package com.meiyou.router.routable;
+package com.jet.router.routable;
 
 import android.content.Context;
 import android.os.Bundle;

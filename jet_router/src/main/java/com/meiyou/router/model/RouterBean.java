@@ -1,4 +1,4 @@
-package com.meiyou.router.model;
+package com.jet.router.model;
 
 import android.support.annotation.IntDef;
 

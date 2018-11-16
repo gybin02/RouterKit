@@ -12,7 +12,7 @@
 //edit module build.gradle file:
 ```groove
 //内部版本：0.0.1-SNAPSHOT
-compile "com.meiyou.framework:router:1.0.0"
+compile "com.jet.framework:router:1.0.0"
 ```
 
 ## Simple usage
@@ -69,7 +69,7 @@ public class TestAction extends Action {
 just  register RouterCenterActivity in AndroidManifest.xml，
 //即可变成经典的Uri打开，可以支持外部浏览器、其它APP打开内部的Activity。
 ```xml
-<activity android:name="com.meiyou.router.RouterCenterActivity">
+<activity android:name="com.jet.router.RouterCenterActivity">
     <intent-filter>
         <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />

@@ -38,7 +38,7 @@ dependencies {
     if (doPackage == "True") {
         compile project(':jet_annotation')
     } else {
-        compile "com.meiyou.framework:router-annotation:${DEPEND_VERSION}"
+        compile "com.jet.framework:router-annotation:${DEPEND_VERSION}"
     }
 
     //也只会当前Module有效
@@ -51,7 +51,7 @@ dependencies {
     if (doPackage == "True") {
         compile project(':jet_compiler')
     } else {
-        compile "com.meiyou.framework:router-compiler:${DEPEND_VERSION}"
+        compile "com.jet.framework:router-compiler:${DEPEND_VERSION}"
     }
 
     apply from: rootProject.file("mvn.gradle")

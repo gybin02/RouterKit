@@ -1,9 +1,9 @@
-package com.meiyou.jet.module_b.action;
+package com.jet.jet.module_b.action;
 
 import android.util.Log;
 
-import com.meiyou.annotation.JUri;
-import com.meiyou.router.action.Action;
+import com.jet.annotation.JUri;
+import com.jet.router.action.Action;
 
 import java.util.Map;
 

@@ -1,4 +1,4 @@
-package com.meiyou.temp;
+package com.jet.temp;
 
 /**
  * 生成的Java文件

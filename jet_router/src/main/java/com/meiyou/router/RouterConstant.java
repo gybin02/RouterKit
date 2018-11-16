@@ -1,4 +1,4 @@
-package com.meiyou.router;
+package com.jet.router;
 
 /**
  * 默认变量
@@ -9,6 +9,6 @@ package com.meiyou.router;
 
 public class RouterConstant {
 
-    public static final String PkgName = "com.meiyou.router.data";
+    public static final String PkgName = "com.jet.router.data";
     public static final String ClassName = "RouterTable";
 }
