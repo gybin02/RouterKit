@@ -1,4 +1,4 @@
-package com.meiyou.router.routable;
+package com.jet.router.routable;
 
 /**
      * The class used when you want to map a function (given in `run`)

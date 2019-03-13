@@ -1,4 +1,4 @@
-package com.meiyou.annotation;
+package com.jet.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
  * <p>
  * http://git.meiyou.im/Android/Route
  *
- * @author zhengxiaobin@xiaoyouzi.com
+ * @author zhengxiaobin
  * @since 17/5/18
  */
 @Target(ElementType.TYPE) // 代表在类级别上才能使用该注解

@@ -1,4 +1,4 @@
-package com.meiyou.router.model;
+package com.jet.router.model;
 
 import android.support.annotation.IntDef;
 
@@ -8,7 +8,7 @@ import java.lang.annotation.RetentionPolicy;
 /**
  * 数据
  *
- * @author zhengxiaobin@xiaoyouzi.com
+ * @author zhengxiaobin
  * @since 17/7/13
  */
 

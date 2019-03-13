@@ -3,11 +3,11 @@ package com.seeker.tony.myapplication;
 import android.app.Application;
 import android.content.Context;
 
-import com.meiyou.router.Router;
+import com.jet.router.Router;
 
 
 /**
- * @author zhengxiaobin@xiaoyouzi.com
+ * @author zhengxiaobin
  * @since 17/7/13
  */
 

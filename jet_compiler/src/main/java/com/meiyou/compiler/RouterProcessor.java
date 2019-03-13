@@ -1,8 +1,8 @@
-package com.meiyou.compiler;
+package com.jet.compiler;
 
 import com.google.auto.service.AutoService;
 import com.google.gson.Gson;
-import com.meiyou.annotation.JUri;
+import com.jet.annotation.JUri;
 import com.squareup.javapoet.CodeBlock;
 import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
@@ -34,12 +34,12 @@ import javax.tools.StandardLocation;
 /**
  * 直接Build，由于Gradle的配置，代码不变，APT可能不执行，要执行clean + build;
  *
- * @author zhengxiaobin@xiaoyouzi.com
+ * @author zhengxiaobin
  * @since 17/7/13
  */
 @AutoService(Processor.class)
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
-@SupportedAnnotationTypes({"com.meiyou.annotation.JUri"})
+@SupportedAnnotationTypes({"com.jet.annotation.JUri"})
 public class RouterProcessor extends AbstractProcessor {
     //测试保存在META-INF里面
     static final String METADATA_PATH = "META-INF/spring-configuration-metadata.json";
@@ -48,7 +48,7 @@ public class RouterProcessor extends AbstractProcessor {
     public static final String ASSET_PATH = "assets/router/";
     public static final String FILE_SUFFIX = ".json";
 
-    public static final String PkgName = "com.meiyou.router.data";
+    public static final String PkgName = "com.jet.router.data";
     public static final String ClassName = "RouterTable";
 
     /**

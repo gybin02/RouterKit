@@ -11,15 +11,15 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.meiyou.jet.annotation.JFindView;
-import com.meiyou.jet.annotation.JFindViewOnClick;
-import com.meiyou.jet.process.Jet;
-import com.meiyou.router.Router;
+import com.jet.jet.annotation.JFindView;
+import com.jet.jet.annotation.JFindViewOnClick;
+import com.jet.jet.process.Jet;
+import com.jet.router.Router;
 
 /**
  * BLank Fragment
  *
- * @author zhengxiaobin@xiaoyouzi.com
+ * @author zhengxiaobin
  * @since 17/5/25 上午9:45
  */
 public class BlankFragment extends Fragment implements View.OnClickListener {

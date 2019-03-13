@@ -1,4 +1,4 @@
-package com.meiyou.jet.module_b;
+package com.jet.jet.module_b;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.meiyou.jet.module_b.test", appContext.getPackageName());
+        assertEquals("com.jet.jet.module_b.test", appContext.getPackageName());
     }
 }

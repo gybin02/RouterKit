@@ -3,8 +3,8 @@ package com.seeker.tony.myapplication.action;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.meiyou.annotation.JUri;
-import com.meiyou.router.action.Action;
+import com.jet.annotation.JUri;
+import com.jet.router.action.Action;
 import com.seeker.tony.myapplication.MyApplication;
 
 import java.util.Map;
@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * 测试URI 使用Action
  *
- * @author zhengxiaobin@xiaoyouzi.com
+ * @author zhengxiaobin
  * @since 17/7/13
  */
 

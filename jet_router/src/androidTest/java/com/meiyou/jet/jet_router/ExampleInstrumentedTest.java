@@ -1,4 +1,4 @@
-package com.meiyou.jet.jet_router;
+package com.jet.jet.jet_router;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.meiyou.jet.jet_router.test", appContext.getPackageName());
+        assertEquals("com.jet.jet.jet_router.test", appContext.getPackageName());
     }
 }

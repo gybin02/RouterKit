@@ -1,7 +1,7 @@
-package com.meiyou.compiler;
+package com.jet.compiler;
 
 import com.google.auto.service.AutoService;
-import com.meiyou.annotation.MethodInfo;
+import com.jet.annotation.MethodInfo;
 
 import java.util.HashMap;
 import java.util.Set;
@@ -22,7 +22,7 @@ import javax.lang.model.util.Elements;
 //对应getSupportedSourceVersion方法
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
 //对应getSupportedAnnotationTypes方法
-@SupportedAnnotationTypes({ "com.meiyou.annotation.MethodInfo" })
+@SupportedAnnotationTypes({ "com.jet.annotation.MethodInfo" })
 public class MethodInfoProcessor extends AbstractProcessor {
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment env) {

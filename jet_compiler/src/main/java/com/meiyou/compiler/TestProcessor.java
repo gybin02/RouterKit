@@ -1,4 +1,4 @@
-package com.meiyou.compiler;
+package com.jet.compiler;
 
 import com.google.auto.service.AutoService;
 import com.squareup.javapoet.JavaFile;
@@ -22,7 +22,7 @@ import javax.tools.Diagnostic;
 
 @Deprecated
 @AutoService(Processor.class)
-@SupportedAnnotationTypes({"com.meiyou.annotation.Test"})
+@SupportedAnnotationTypes({"com.jet.annotation.Test"})
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
 public class TestProcessor extends AbstractProcessor {
     private Filer filer;

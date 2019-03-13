@@ -20,7 +20,7 @@
 	THE SOFTWARE.
 */
 
-package com.meiyou.router.routable;
+package com.jet.router.routable;
 
 import android.app.Activity;
 import android.content.Context;

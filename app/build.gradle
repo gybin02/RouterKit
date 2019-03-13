@@ -35,7 +35,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
     compile 'com.android.support:design:25.0.1'
     testCompile 'junit:junit:4.12'
-    compile 'com.meiyou.framework:jet:1.0.0'
+    compile 'com.jet.framework:jet:1.0.0'
 
     compile project(':module_b')
     

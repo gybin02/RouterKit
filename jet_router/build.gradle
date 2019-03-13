@@ -42,7 +42,7 @@ dependencies {
     if (doPackage == "True") {
         compile project(':jet_annotation')
     } else {
-        compile "com.meiyou.framework:router-annotation:${DEPEND_VERSION}"
+        compile "com.jet.framework:router-annotation:${DEPEND_VERSION}"
     }
 
 //    compile "com.meiyou.framework:router-annotation:1.0.0"
@@ -57,7 +57,7 @@ dependencies {
     if (doPackage == "True") {
         compile project(':jet_compiler')
     } else {
-        compile "com.meiyou.framework:router-compiler:${DEPEND_VERSION}"
+        compile "com.jet.framework:router-compiler:${DEPEND_VERSION}"
     }
 
 //    compile "com.meiyou.framework:router-compiler:1.0.0"

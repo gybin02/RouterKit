@@ -1,4 +1,4 @@
-package com.meiyou.router;
+package com.jet.router;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.os.PersistableBundle;
 /**
  * 路由中心页面
  *
- * @author zhengxiaobin@xiaoyouzi.com
+ * @author zhengxiaobin
  * @since 17/7/17
  */
 public class RouterCenterActivity extends Activity {

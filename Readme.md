@@ -1,10 +1,17 @@
 # Jet RouterKit
+
+ [ ![Download](https://api.bintray.com/packages/gybin02/maven/router/images/download.svg) ](https://bintray.com/gybin02/maven/router/_latestVersion)
+ [![qq群](https://img.shields.io/badge/QQ%E7%BE%A4-547612870-ff69b4.svg)](http://shang.qq.com/wpa/qunwpa?idkey=f474c19f6b6b7d67e91685511207bcd326a38f50818d8e4569e52a167df85009)
+ [![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+
+
+
 ~~路由库~~；Android平台对页面、服务的路由框架。自动化且易用。
 ![原理图](http://upload-images.jianshu.io/upload_images/1194012-012b64699f6d1222.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 - 基于**APT**技术（注解-编译时生成代码，不反射，无性能损耗），通过注解方式来实现**URL**打开Activity功能或 执行特定动作
 - 并支持在WebView和外部浏览器使用，支持路由表维护，降级访问等；
-- 使用[**Jet**](http://git.meiyou.im/Android/jet)技术支持Bundle、Intent，Uri参数自动注入页面并转换参数类型。
-
+- 使用[**Jet**](https://github.com/gybin02/Jet)技术支持Bundle、Intent，Uri参数自动注入页面并转换参数类型。
+- [English Version](/Readme_en.md)
 
 ### 方案对比
 |实现功能|**RouterKit**|Airbnb 的**DeepLinkDispatch**|阿里     **ARouter**|天猫 统跳协议|**ActivityRouter**Github上Star最多 |
@@ -101,7 +108,7 @@ public class TestAction extends Action {
     
 只要在AndroidManifest.xml注册了RouterCenterActivity，即可变成经典的Uri打开，可以支持外部浏览器、其它APP打开内部的Activity。
 ```xml
-<activity android:name="com.meiyou.router.RouterCenterActivity">
+<activity android:name="com.jet.router.RouterCenterActivity">
     <intent-filter>
         <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
@@ -139,7 +146,7 @@ Router.addScheme("meiyou");
 在gradle文件配置：
 ```groove
 //内部版本：0.0.1-SNAPSHOT
-compile "com.meiyou.framework:router:0.0.1-SNAPSHOT"
+compile "com.jet.framework:router:1.0.0"
 ```
 
 ### 混淆
@@ -151,6 +158,7 @@ compile "com.meiyou.framework:router:0.0.1-SNAPSHOT"
 * [前端组件化]Vue.js And React 组件化(https://halfrost.com/vue_ios_modularization/)
 * [LiteRouter模仿retrofit，各个业务分根据需求约定好接口，就像一份接口文档一样](http://www.jianshu.com/p/79e9a54e85b2)
 * [routable-android 模式匹配方式的路由](https://github.com/clayallsopp/routable-android)
+* [NodeJs-Express 路由框架](http://www.expressjs.com.cn/guide/routing.html)
 
 ### TODO
 - JUri 支持数组数据（fixed）
@@ -162,6 +170,9 @@ compile "com.meiyou.framework:router:0.0.1-SNAPSHOT"
 - 调用方式接口化，like: retrofit;
 - 路由结果回调？ isNeed？
 - Kotlin版本实现
+- 路由表初始化异步线程化
+- 安全性
+- like Express, 拦截器，中间件化？ 
 
 
 ### 交流群：
@@ -169,7 +180,7 @@ compile "com.meiyou.framework:router:0.0.1-SNAPSHOT"
  
 ### License
 
-Copyright 2017 zhengxiaobin@xiaoyouzi.com; 
+Copyright 2017 gybin02@163.com
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

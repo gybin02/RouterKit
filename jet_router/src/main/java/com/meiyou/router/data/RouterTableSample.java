@@ -1,9 +1,9 @@
-package com.meiyou.router.data;
+package com.jet.router.data;
 
 /**
  * 生成的代码
  *
- * @author zhengxiaobin@xiaoyouzi.com
+ * @author zhengxiaobin
  * @since 17/7/14
  */
 

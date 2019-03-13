@@ -1,11 +1,11 @@
-package com.meiyou.router.meiyou;
+package com.jet.router.meiyou;
 
 import android.support.annotation.NonNull;
 
 /**
  * 美柚特定的Path;
  *
- * @author zhengxiaobin@xiaoyouzi.com
+ * @author zhengxiaobin
  * @since 17/7/25
  */
 

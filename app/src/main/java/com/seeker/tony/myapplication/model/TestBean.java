@@ -3,7 +3,7 @@ package com.seeker.tony.myapplication.model;
 import java.io.Serializable;
 
 /**
- * @author zhengxiaobin@xiaoyouzi.com
+ * @author zhengxiaobin
  * @since 17/5/22
  */
 
