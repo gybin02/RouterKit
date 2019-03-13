@@ -1,6 +1,10 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
+    lintOptions {
+        abortOnError false
+    }
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
 
@@ -41,6 +45,8 @@ dependencies {
         compile "com.meiyou.framework:router-annotation:${DEPEND_VERSION}"
     }
 
+//    compile "com.meiyou.framework:router-annotation:1.0.0"
+    
     //也只会当前Module有效
     //    annotationProcessor project(':jet_compiler')
     //provided 只会在当前Module编译，不会被打包到AAR
@@ -54,5 +60,24 @@ dependencies {
         compile "com.meiyou.framework:router-compiler:${DEPEND_VERSION}"
     }
 
+//    compile "com.meiyou.framework:router-compiler:1.0.0"
+
     apply from: rootProject.file("mvn.gradle")
+}
+
+publish {
+    userOrg = 'gybin02'      //bintray注册的用户名
+    groupId = 'com.meiyou.framework'         //compile引用时的第1部分groupId
+    artifactId = 'router'     //compile引用时的第2部分项目名
+    publishVersion = '1.0.0'    //compile引用时的第3部分版本号
+    desc = '自动化且易用'
+    website = 'https://github.com/gybin02/RouterKiter'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    failOnError false
+    options.encoding "utf-8"
+    options.charSet 'utf-8'
 }

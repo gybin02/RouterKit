@@ -66,3 +66,5 @@ android.applicationVariants.all { variant ->
     copyMetaInf.into "build/intermediates/sourceFolderJavaResources/$variantName"
     tasks.findByName("transformResourcesWithMergeJavaResFor$variantNameCapitalized").dependsOn copyMetaInf
 }
+
+//tasks.getByPath(":jet_router:mavenAndroidJavadocs").enabled = false
